@@ -435,3 +435,30 @@ bool isMutuallyInverseMatrices(matrix m1, matrix m2){
 
     return true; // Матрицы взаимнообратные
 }
+
+int max(int a, int b){
+    return a > b ? a : b;
+}
+
+//находит сумму максимальных элементов всех псевдодиагоналей
+long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
+    long long sum = 0;
+    for (int i = 0; i < m.nRows; i++) {
+        m.values[i][i] = 0;
+    }
+
+    for (int k = 0; k < m.nCols + m.nRows - 1; k++) {
+        int maxInDiagonal = INT_MIN;
+        int col = max(0, k - m.nRows + 1);
+        int row = max(0, m.nRows - k - 1);
+
+        while (col < m.nCols && row < m.nRows) {
+            maxInDiagonal = max(maxInDiagonal, m.values[row][col]);
+            col++;
+            row++;
+        }
+        sum += maxInDiagonal;
+    }
+
+    return sum;
+}

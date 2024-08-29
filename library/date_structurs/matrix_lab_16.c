@@ -52,19 +52,21 @@ bool sixthTask(matrix m1, matrix m2){
     return isMutuallyInverseMatrices(m1, m2);
 }
 
+//Задача 7: находит сумму максимальных элементов всех псевдодиагоналей
+long long seventhTask(matrix m){
+    return findSumOfMaxesOfPseudoDiagonal(m);
+}
 
 int main(){
-    matrix a = createMatrixFromArray((int[]) {1, 0,
-                                              0, 1},
-                                     2, 2);
-    matrix b = createMatrixFromArray((int[]) {1, 0,
-                                              1, 1},
-                                     2, 2);
-    if (sixthTask(a, b)){
-        printf("true");
-    }else{
-        printf("false");
-    }
+    matrix a = createMatrixFromArray((int[]) {3, 2, 5, 4,
+                                              1, 3, 6, 3,
+                                              3, 2, 1, 2},
+                                     3, 4);
+    matrix b = createMatrixFromArray((int[]) {3, 2, 5, 4, 6, 8,
+                                              1, 3, 6, 3, 4, 6,
+                                              3, 2, 1, 2, 7, 9},
+                                     3, 6);
+    printf("%lld", seventhTask(b));
 
     return 0;
 }
