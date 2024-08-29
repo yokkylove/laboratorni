@@ -71,4 +71,7 @@ bool unordered_array_set_isStrictInclusion(unordered_array_set set1, unordered_a
 // проверяет, является ли множество set1 включенным в множество set2.
 bool unordered_array_set_isInclusion(unordered_array_set set1, unordered_array_set set2);
 
+//Сравнивает два целых числа, представленных в виде указателей на void.
+static int compare_ints(const void* a, const void* b);
+
 #endif

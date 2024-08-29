@@ -402,9 +402,3 @@ void test () {
     test_seventeenthTask();
     test_eightteenthTask();
 }
-
-int main () {
-    test();
-
-    return 0;
-}
