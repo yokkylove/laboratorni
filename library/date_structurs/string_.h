@@ -2,6 +2,7 @@
 
 #ifndef GG_STRING__H
 #define GG_STRING__H
+#define MAX_STRING_SIZE 100
 
 //возвращает количество символом в строке, не считая ноль-символ
 size_t strlen_(const char *begin);
