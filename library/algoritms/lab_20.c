@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "C:/Users/tanya/CLionProjects/GG/library/date_structurs/vector.h"
+#include "conio.h"
 
 typedef struct {
     int row;
@@ -565,6 +566,47 @@ void test_for_task_9(){
         assert(v.data[ind] == expectedArrayNums[ind]); }
 }
 
-int main(){
+void fillingFileWithText(char *fileName, char *text){
+    FILE *file = openFile(fileName, "w");
+    fprintf(file, "%s", text);
+    fclose(file);
+}
+
+void task_10(char *fileName, size_t countOutputLines, char *text){
+    fillingFileWithText(fileName, text);
+    FILE *file = openFile(fileName, "r");
+    char line[127];
+    size_t count = 0;
+    while (fgets(line, 127, file) != NULL) {
+        printf("%s", line);
+        count++;
+        if (count == countOutputLines){
+            printf("Please, press Ctrl + C\n");
+            while (getch() != 3);
+        }
+    }
+}
+
+void test_for_task_10(){
+    char *fileName = "../tenthTask.txt";
+    size_t countOutputLines = 3;
+    char text[200] = "123\n456\n789\n0";
+    task_10(fileName, countOutputLines, text);
+}
+
+void tests_all() {
+    test_for_task_1();
     test_for_task_2();
+    test_for_task_3();
+    test_for_task_4();
+    test_for_task_5();
+    test_for_task_6();
+    test_for_task_7();
+    test_for_task_8();
+    test_for_task_9();
+    test_for_task_10();
+}
+
+int main(){
+    tests_all();
 }
