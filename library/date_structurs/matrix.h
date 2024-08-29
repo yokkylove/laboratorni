@@ -142,4 +142,7 @@ int countEqClassesByRowsSum(matrix m);
 // эта функция считает количество уникальных элементов в массиве a длиной n
 int countNUnique(long long *a, int n);
 
+//определяет количество особых элементов матрицы
+int getNSpecialElement(matrix m);
+
 #endif

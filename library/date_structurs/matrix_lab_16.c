@@ -64,7 +64,7 @@ int eighthTask(matrix m){
 
 //Задача 9: сортирует по расстоянию до начала координат
 void ninthTask(matrix m){
-    return sortByDistances(m);
+    sortByDistances(m);
 }
 
 //Задача 10: определяет количество классов эквивалентных строк данной прямоугольной матрицы
@@ -72,16 +72,21 @@ int tenthTask(matrix m){
     return countEqClassesByRowsSum(m);
 }
 
+//Задача 11: определяет количество особых элементов матрицы
+int eleventhTask(matrix m){
+    return getNSpecialElement(m);
+}
+
 int main(){
-    matrix a = createMatrixFromArray((int[]) {6, 8, 9, 2,
-                                              7, 12, 3, 4,
-                                              10, 11, 5, 1},
+    matrix a = createMatrixFromArray((int[]) {3, 5, 5, 4,
+                                              2, 3, 6, 7,
+                                              12, 2, 1, 2},
                                      3, 4);
     matrix b = createMatrixFromArray((int[]) {3, 2, 5, 4, 6, 8,
                                               1, 3, 6, 3, 4, 6,
                                               3, 2, 1, 2, 7, 9},
                                      3, 6);
-    printf("%d", eighthTask(a));
+    printf("%d", eleventhTask(a));
 
     return 0;
 }
