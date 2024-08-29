@@ -72,7 +72,7 @@ int main1() {
     return 0;
 }
 
-int main() {
+int main2() {
     FILE *input_file = fopen("C:/Users/tanya/CLionProjects/GG/library/algoritms/19_2.txt", "r");
     FILE *output_file = fopen("C:/Users/tanya/CLionProjects/GG/library/algoritms/1.txt", "w");
     double number;
@@ -92,6 +92,45 @@ int main() {
     fclose(output_file);
 
     copyFileContent("C:/Users/tanya/CLionProjects/GG/library/algoritms/1.txt", "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_2.txt");
+
+    return 0;
+}
+
+int main() {
+    // Открываем файл для чтения и записи
+    FILE *file = fopen("C:/Users/tanya/CLionProjects/GG/library/algoritms/19_3.txt", "r+");
+    char operation;
+    int operand1, operand2, result;
+
+    if (file == NULL) {
+        printf("File opening error\n");
+        return 1;
+    }
+
+    // Считываем операнды и операцию из файла
+    fscanf(file, "%d %c %d", &operand1, &operation, &operand2);
+
+    // Вычисляем результат
+    if (operation == '+') {
+        result = operand1 + operand2;
+    } else if (operation == '-') {
+        result = operand1 - operand2;
+    } else if (operation == '*') {
+        result = operand1 * operand2;
+    } else if (operation == '/') {
+        result = operand1 / operand2;
+    } else {
+        printf("Unsupported operation\n");
+        fclose(file);
+        return 1;
+    }
+
+    // Дописываем результат в конец файла
+    fprintf(file, "\nResult: %d\n", result);
+
+    fclose(file);
+
+    printf("The result of the calculation is added to the file\n");
 
     return 0;
 }
