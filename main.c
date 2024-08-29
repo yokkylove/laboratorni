@@ -259,8 +259,8 @@ void task_10(){
 }
 
 int mains(){
-    task_1();
-    task_2();
+    task_1_();
+    task_2_();
     task_3();
     task_4();
     task_5();

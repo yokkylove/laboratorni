@@ -1,0 +1,129 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "library",
+					"childIndexes" : 
+					[
+						2,
+						3
+					],
+					"jsonFile" : "directory-library-Debug-73c165fbd1f03fdab753.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "library"
+				},
+				{
+					"build" : "library/algoritms",
+					"jsonFile" : "directory-library.algoritms-Debug-49b702c8cee01adb9261.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "library/algoritms",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "library/date_structurs",
+					"jsonFile" : "directory-library.date_structurs-Debug-6845dc99228f650c5e44.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "library/date_structurs",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"name" : "GG",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "GG::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GG-Debug-42003951224335ef7a4a.json",
+					"name" : "GG",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "algoritms::@5751c4e62cb166124359",
+					"jsonFile" : "target-algoritms-Debug-875adaac91ffb2518791.json",
+					"name" : "algoritms",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "date_structurs::@5860c8f1e6745f6d0eec",
+					"jsonFile" : "target-date_structurs-Debug-3cbc0618ce1f2c130640.json",
+					"name" : "date_structurs",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/tanya/CLionProjects/GG/cmake-build-debug",
+		"source" : "C:/Users/tanya/CLionProjects/GG"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}
