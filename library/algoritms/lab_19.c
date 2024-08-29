@@ -367,3 +367,46 @@ void test_for_task_19_6() {
 
     ASSERT_TXT(str1, str2);
 }
+
+void task_19_7(const char *filename) {
+    FILE *file = fopen(filename, "rb");
+    if (file == NULL) {
+        printf("Error opening file\n");
+        exit(-3);
+    }
+
+    FILE *result_file = fopen("result.txt", "wb");
+    if (result_file == NULL) {
+        printf("Error creating resulting file.\n");
+        fclose(file);
+        exit(-3);
+    }
+
+    int positive_number;
+    while (fread(&positive_number, sizeof(positive_number), 1, file)) {
+        if (positive_number > 0) {
+            fwrite(&positive_number, sizeof(positive_number), 1, result_file);
+        }
+    }
+
+    fclose(file);
+    file = fopen(filename, "rb");
+
+    int negative_number;
+    while (fread(&negative_number, sizeof(negative_number), 1, file)) {
+        if (negative_number < 0) {
+            fwrite(&negative_number, sizeof(negative_number), 1, result_file);
+        }
+    }
+
+    fclose(file);
+    fclose(result_file);
+}
+
+void test_for_task_19_7() {
+    char *str1 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_7.txt";
+    char *str2 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_7_test.txt";
+    task_19_7(str1);
+
+    ASSERT_TXT(str1, str2);
+}
