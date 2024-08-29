@@ -20,6 +20,12 @@ typedef struct domain{
     char name[200];
 } domain;
 
+typedef struct node {
+    int key;
+    struct node *left;
+    struct node *right;
+} node;
+
 int **matrix_task_1;
 
 void *increment_submatrix(void *arg) {
@@ -408,6 +414,74 @@ void test_for_task_6(){
     task_6(s2, length2, got2, &resLength2);
     char expected2[10] = "4321";
     assert(strcmp(got2, expected2) == 0);
+}
+
+node *createNode(int k) {
+    node *newNode = (node *) malloc(sizeof(node));
+    newNode->key = k;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+node* insert(node *p, int k, bool isLeft) {
+    node *newNode = createNode(k);
+    if (isLeft)
+        p->left = newNode;
+    else
+        p->right = newNode;
+    return newNode;
+}
+
+int searchMaxInd(const int array[], int start, int end){
+    if (start > end){
+        return end + 1;
+    } else{
+        int maxNumInd = start;
+        for (int ind = start + 1; ind <= end; ind++){
+            if (array[ind] > array[maxNumInd]){
+                maxNumInd = ind;
+            }
+        }
+        return maxNumInd;
+    }
+}
+
+void buildNodes(node *p, int array[], int start, int end, bool isLeft){ int
+            maxNumInd = searchMaxInd(array, start, end);
+    if (maxNumInd == end + 1){
+        if (isLeft)
+            p->left = NULL;
+        else
+            p->right = NULL;
+        printf("null ");
+        return;
+    } else{
+        printf("%d ", array[maxNumInd]);
+        node *newNode = insert(p, array[maxNumInd], isLeft);
+        buildNodes(newNode, array, start, maxNumInd - 1, true);
+        buildNodes(newNode, array, maxNumInd + 1, end, false); }
+}
+
+void task_7(int array[], int lengthArray){
+    if (lengthArray == 0){
+        return;
+    } else {
+        int maxNumInd = searchMaxInd(array, 0, lengthArray - 1);
+        node *newNode = createNode(array[maxNumInd]); printf("%d ", array[maxNumInd]);
+        buildNodes(newNode, array, 0, maxNumInd - 1, true);
+        buildNodes(newNode, array,maxNumInd + 1, lengthArray - 1, false);
+        printf("\n");
+    }
+}
+
+void test_for_task_7(){
+    int array1[6] = {3, 2, 1, 6, 0, 5};
+    int lengthArray1 = 6;
+    task_7(array1, lengthArray1);
+
+    int array2[3] = {3, 2, 1};
+    int lengthArray2 = 3;
+    task_7(array2, lengthArray2);
 }
 
 int main(){
