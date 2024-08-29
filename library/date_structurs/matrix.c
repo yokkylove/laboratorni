@@ -462,3 +462,45 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
 
     return sum;
 }
+
+//находит минимальный элемент в выделенной области
+int getMinInArea(matrix m){
+    int u = 0;
+    int min[u];
+    int start_rows, start_cols, end_rows, end_cols;
+    int maximum = INT_MIN;
+    int max_rows, max_cols;
+    for (int i = 0; i < m.nRows; i++) {
+        for (int j = 0; j < m.nCols; j++) {
+            maximum = max(m.values[i][j], maximum);
+            max_rows = i;
+            max_cols = j;
+            if (i == 0) {
+                return m.values[i][j];
+            } else {
+                start_rows = 0;
+                start_cols = i - j;
+                end_rows = i;
+                if (j == m.nCols) {
+                    end_cols = j;
+                } else {
+                    end_cols = j + (m.nCols - j);
+                }
+            }
+            for (u = 0; u < 100; ++u) {
+                for (int k = start_rows; k <= end_rows; k++) {
+                    for (int l = start_cols; l <= end_cols; l++) {
+                        min[u] = m.values[k][l];
+                    }
+                }
+            }
+        }
+    }
+    for(size_t o = 0; o < u - 1; o++) {
+        for (size_t p = u - 1; p > o; p--) {
+            if (min[p - 1] > min[p])
+                swap(&min[p - 1], &min[p]);
+        }
+    }
+    return min[0];
+}

@@ -57,16 +57,21 @@ long long seventhTask(matrix m){
     return findSumOfMaxesOfPseudoDiagonal(m);
 }
 
+//Задача 8: находит минимальный элемент в выделенной области
+int eighthTask(matrix m){
+    return getMinInArea(m);
+}
+
 int main(){
-    matrix a = createMatrixFromArray((int[]) {3, 2, 5, 4,
-                                              1, 3, 6, 3,
-                                              3, 2, 1, 2},
+    matrix a = createMatrixFromArray((int[]) {6, 8, 9, 2,
+                                              7, 12, 3, 4,
+                                              10, 11, 5, 1},
                                      3, 4);
     matrix b = createMatrixFromArray((int[]) {3, 2, 5, 4, 6, 8,
                                               1, 3, 6, 3, 4, 6,
                                               3, 2, 1, 2, 7, 9},
                                      3, 6);
-    printf("%lld", seventhTask(b));
+    printf("%d", eighthTask(a));
 
     return 0;
 }
