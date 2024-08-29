@@ -723,3 +723,34 @@ void printMatricesWithMinNorm(matrix *ms, int nMatrix) {
         }
     }
 }
+
+int min2(int a, int b) {
+    return (a < b) ? a : b;
+}
+
+//определяет количество особых элементов в матрице
+int getNSpecialElement2(matrix m) {
+    int special_elements = 0;
+    for (int i = 0; i < m.nRows; i++) {
+        for (int j = 0; j < m.nCols; j++) {
+            int is_special = 1;
+            // Проверяем элемент на "особенность"
+            for (int k = 0; k < j; k++) {
+                if (m.values[i][k] >= m.values[i][j]) {
+                    is_special = 0;
+                    break;
+                }
+            }
+            for (int k = j + 1; k < m.nCols; k++) {
+                if (m.values[i][k] <= m.values[i][j]) {
+                    is_special = 0;
+                    break;
+                }
+            }
+            if (is_special) {
+                special_elements++;
+            }
+        }
+    }
+    return special_elements - 2;
+}

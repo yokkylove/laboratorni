@@ -97,6 +97,11 @@ void fifteenthTask(matrix *ms, int nMatrix){
     printMatricesWithMinNorm(ms, nMatrix);
 }
 
+//Задача 16: определяет количество особых элементов в матрице
+void sixteenthTask(matrix m){
+    getNSpecialElement2(m);
+}
+
 int main(){
     matrix a = createMatrixFromArray((int[]) {2, 3, 5, 5, 4,
                                               6, 2, 3, 8, 12,

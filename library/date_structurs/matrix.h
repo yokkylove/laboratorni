@@ -178,4 +178,7 @@ int getMaxNorm(matrix m);
 //Выводит матрицы с наименьшей нормой.
 void printMatricesWithMinNorm(matrix *ms, int nMatrix);
 
+//определяет количество особых элементов в матрице
+int getNSpecialElement2(matrix m);
+
 #endif
