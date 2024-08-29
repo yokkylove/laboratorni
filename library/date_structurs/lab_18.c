@@ -1009,8 +1009,46 @@ void test_findWordBeforeFirstOccurrence() {
     test_for_findWordBeforeFirstOccurrence3();
 }
 
+// Функция для проверки, является ли слово палиндромом
+int is_palindrome(char *word) {
+    int length = strlen_(word);
+    for (int i = 0; i < length / 2; i++) {
+        if (tolower(word[i]) != tolower(word[length - i - 1])) {
+            return 0; // Слово не палиндром
+        }
+    }
+    return 1; // Слово палиндром
+}
+
+// Функция для удаления слов-палиндромов из строки
+void remove_palindromes(char *str) {
+    char *token = strtok_(str, " ");
+    char result[1000] = ""; // Буфер для хранения результата
+
+    while (token != NULL) {
+        if (!is_palindrome(token)) {
+            strcat_(result, token);
+            strcat_(result, " ");
+        }
+        token = strtok_(NULL, " ");
+    }
+
+    // Копируем результат обратно в исходную строку
+    strcpy(str, result);
+}
+
+void test_remove_palindromes(){
+    char str1[] = "mamam hi mamam";
+    remove_palindromes(str1);
+    ASSERT_STRING(str1, "hi");
+
+    char str2[] = "mama hi amam";
+    remove_palindromes(str2);
+    ASSERT_STRING(str2, "mama hi amam");
+}
+
 int main() {
-    test_findWordBeforeFirstOccurrence();
+    test_remove_palindromes();
 
     return 0;
 }
