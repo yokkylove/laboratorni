@@ -165,14 +165,6 @@ void test_digitToStartLetterToEndt() {
     test_digitToStartLetterToEndt4();
 }
 
-int main(){
-    test_removeNonLetters();
-    test_removeExtraSpaces();
-    test_digitToStartLetterToEndt();
-
-    return 0;
-}
-
 //вернёт значение 0, если слово не было считано,
 //в противном случае будет возвращено значение 1
 bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word) {
@@ -193,4 +185,66 @@ bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word) {
     }
     word->begin = rend + 1;
     return true;
+}
+
+//преобразовывает строку, заменяя каждую цифру соответствующим ей числом пробелов
+void replacesNumbersWithSpaces(char *s) {
+    int num_alphabet = 48;
+    char _stringBuffer[MAX_STRING_SIZE + 1];
+    char *endSource = getEndOfString(s);
+    char *stringBufferStart = _stringBuffer;
+    char *endOfStringBuffer = copy(s, endSource, stringBufferStart);
+    *endOfStringBuffer = '\0';
+    while (*stringBufferStart != '\0') {
+        if (isalpha(*stringBufferStart)) {
+            *s++ = *stringBufferStart;
+        }
+        else if (isdigit(*stringBufferStart)) {
+            while (*stringBufferStart - num_alphabet > 0) {
+                *s++ = ' ';
+                (*stringBufferStart)--;
+            }
+        }
+        ++stringBufferStart;
+    }
+}
+
+void test_replacesNumbersWithSpaces_stringIsEmpty() {
+    char s[MAX_STRING_SIZE] = "";
+    replacesNumbersWithSpaces(s);
+    ASSERT_STRING("", s);
+}
+
+void test_replacesNumbersWithSpaces_onlyLetters() {
+    char s[MAX_STRING_SIZE] = "Hey";
+    replacesNumbersWithSpaces(s);
+    ASSERT_STRING("Hey", s);
+}
+
+void test_replacesNumbersWithSpaces_onlydigits() {
+    char s[MAX_STRING_SIZE] = "897654";
+    replacesNumbersWithSpaces(s);
+    ASSERT_STRING("                                       ", s);
+}
+
+void test_replacesNumbersWithSpaces_lettersAndDigits() {
+    char s[MAX_STRING_SIZE] = "H3e0y1";
+    replacesNumbersWithSpaces(s);
+    ASSERT_STRING("H   ey ", s);
+}
+
+void test_replacesNumbersWithSpaces_task4() {
+    test_replacesNumbersWithSpaces_stringIsEmpty();
+    test_replacesNumbersWithSpaces_onlyLetters();
+    test_replacesNumbersWithSpaces_onlydigits();
+    test_replacesNumbersWithSpaces_lettersAndDigits();
+}
+
+int main(){
+    test_removeNonLetters();
+    test_removeExtraSpaces();
+    test_digitToStartLetterToEndt();
+    test_replacesNumbersWithSpaces_task4();
+
+    return 0;
 }
