@@ -1,0 +1,11 @@
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/CMakeFiles/GG.dir
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/library/CMakeFiles/edit_cache.dir
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/library/CMakeFiles/rebuild_cache.dir
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/library/algoritms/CMakeFiles/algoritms.dir
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/library/algoritms/CMakeFiles/edit_cache.dir
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/library/algoritms/CMakeFiles/rebuild_cache.dir
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/library/date_structurs/CMakeFiles/date_structurs.dir
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/library/date_structurs/CMakeFiles/edit_cache.dir
+C:/Users/tanya/CLionProjects/GG/cmake-build-debug/library/date_structurs/CMakeFiles/rebuild_cache.dir
