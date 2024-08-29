@@ -4,14 +4,14 @@
 #include <malloc.h>
 
 void test_for_getMatrix1 () {
-    matrix m = getMatrix(3, 3);
+    matrix m = getMemMatrix(3, 3);
     assert(m.nCols == 3);
     assert(m.nRows == 3);
     assert(m.values != NULL);
 }
 
 void test_for_getMatrix2 () {
-    matrix m = getMatrix(8, 1);
+    matrix m = getMemMatrix(8, 1);
     assert(m.nCols == 1);
     assert(m.nRows == 8);
     assert(m.values != NULL);
@@ -24,7 +24,7 @@ void test_getMatrix () {
 
 void test_for_getArrayOfMatrices1 () {
     int nMatrices = 4;
-    matrix *ms = getArrayOfMatrices(nMatrices, 4, 6);
+    matrix *ms = getMemArrayOfMatrices(nMatrices, 4, 6);
     for (int i = 0; i < nMatrices; i++) {
         assert(ms[i].nCols == 6);
         assert(ms[i].nRows == 4);
@@ -34,7 +34,7 @@ void test_for_getArrayOfMatrices1 () {
 
 void test_for_getArrayOfMatrices2 () {
     int nMatrices = 8;
-    matrix *ms = getArrayOfMatrices(nMatrices, 9, 10);
+    matrix *ms = getMemArrayOfMatrices(nMatrices, 9, 10);
     for (int i = 0; i < nMatrices; i++) {
         assert(ms[i].nCols == 10);
         assert(ms[i].nRows == 9);
@@ -50,14 +50,14 @@ void test_getArrayOfMatrices () {
 void test_for_freeMatrix1 () {
     int a[] = {1, 2, 3, 1, 2, 3, 1, 2, 3};
     matrix m = createMatrixFromArray(&a, 3, 3);
-    freeMatrix(&m);
+    freeMemMatrix(&m);
     assert(m.values != NULL);
 }
 
 void test_for_freeMatrix2 () {
     int a[] = {1, 2, 3, 4, 5, 1, 2, 3, 4, 5};
     matrix m = createMatrixFromArray(&a, 2, 5);
-    freeMatrix(&m);
+    freeMemMatrix(&m);
     assert(m.values != NULL);
 }
 
@@ -84,7 +84,7 @@ void test_for_freeMatrices1 () {
     int nMatrices = 3;
     matrix ms[3] = {m1, m2, m3};
 
-    freeMatrices(ms, nMatrices);
+    freeMemMatrices(ms, nMatrices);
 
     for (int i = 0; i < nMatrices; i++) {
         assert(ms[i].values != NULL);
@@ -109,7 +109,7 @@ void test_for_freeMatrices2 () {
     int nMatrices = 3;
     matrix ms[3] = {m1, m2, m3};
 
-    freeMatrices(ms, nMatrices);
+    freeMemMatrices(ms, nMatrices);
 
     for (int i = 0; i < nMatrices; i++) {
         assert(ms[i].values != NULL);
@@ -136,8 +136,8 @@ void test_swapRows() {
             assert(a.values[i][j] == b.values[i][j]);
         }
     }
-    freeMatrix(&a);
-    freeMatrix(&b);
+    freeMemMatrix(&a);
+    freeMemMatrix(&b);
 }
 
 void test_swapCols() {
@@ -155,8 +155,8 @@ void test_swapCols() {
             assert(a.values[i][j] == b.values[i][j]);
         }
     }
-    freeMatrix(&a);
-    freeMatrix(&b);
+    freeMemMatrix(&a);
+    freeMemMatrix(&b);
 }
 
 void test_insertionSortRowsMatrixByRowCriteria () {
@@ -188,8 +188,8 @@ void test_selectionSortColsMatrixByColCriteria() {
             assert(a.values[i][j] == b.values[i][j]);
         }
     }
-    freeMatrix(&a);
-    freeMatrix(&b);
+    freeMemMatrix(&a);
+    freeMemMatrix(&b);
 }
 
 void test_isSquareMatrix() {
@@ -210,10 +210,10 @@ void test_isSquareMatrix() {
                                               3},
                                      3, 1);
     assert(isSquareMatrix(&d) == false);
-    freeMatrix(&a);
-    freeMatrix(&b);
-    freeMatrix(&c);
-    freeMatrix(&d);
+    freeMemMatrix(&a);
+    freeMemMatrix(&b);
+    freeMemMatrix(&c);
+    freeMemMatrix(&d);
 }
 
 void test_areTwoMatricesEqual() {
@@ -228,8 +228,8 @@ void test_areTwoMatricesEqual() {
     b.values[0][0] = 0;
     assert(!areTwoMatricesEqual(&a, &b));
 
-    freeMatrix(&a);
-    freeMatrix(&b);
+    freeMemMatrix(&a);
+    freeMemMatrix(&b);
 }
 
 void test_isEMatrix() {
@@ -250,9 +250,9 @@ void test_isEMatrix() {
     assert(isEMatrix(&b) == false);
     assert(isEMatrix(&c) == false);
 
-    freeMatrix(&a);
-    freeMatrix(&b);
-    freeMatrix(&c);
+    freeMemMatrix(&a);
+    freeMemMatrix(&b);
+    freeMemMatrix(&c);
 }
 
 void test_isSymmetricMatrix() {
@@ -266,8 +266,8 @@ void test_isSymmetricMatrix() {
                                                        7, 8, 9},
                                               3, 3);
     assert(isSymmetricMatrix(&asymmetric) == false);
-    freeMatrix(&symmetric);
-    freeMatrix(&asymmetric);
+    freeMemMatrix(&symmetric);
+    freeMemMatrix(&asymmetric);
 }
 
 void test_transposeSquareMatrix() {
@@ -285,8 +285,8 @@ void test_transposeSquareMatrix() {
             assert(a.values[i][j] == b.values[i][j]);
         }
     }
-    freeMatrix(&a);
-    freeMatrix(&b);
+    freeMemMatrix(&a);
+    freeMemMatrix(&b);
 }
 
 void test_transposeMatrix() {
@@ -304,8 +304,8 @@ void test_transposeMatrix() {
     for (int i = 0; i < a.nRows; i++)
         for (int j = 0; j < a.nCols; j++)
             assert(a.values[i][j] == b.values[i][j]);
-    freeMatrix(&a);
-    freeMatrix(&b);
+    freeMemMatrix(&a);
+    freeMemMatrix(&b);
 }
 
 void test_getMinValuePos() {
@@ -317,7 +317,7 @@ void test_getMinValuePos() {
     position minPos = getMinValuePos(a);
     assert(minPos.rowIndex == expectedPos.rowIndex &&
            minPos.colIndex == expectedPos.colIndex);
-    freeMatrix(&a);
+    freeMemMatrix(&a);
 }
 
 void test_getMaxValuePos() {
@@ -329,7 +329,7 @@ void test_getMaxValuePos() {
     position maxPos = getMaxValuePos(a);
     assert(maxPos.rowIndex == expectedPos.rowIndex &&
            maxPos.colIndex == expectedPos.colIndex);
-    freeMatrix(&a);
+    freeMemMatrix(&a);
 }
 
 void tests () {
@@ -351,8 +351,3 @@ void tests () {
     test_getMaxValuePos();
 }
 
-int main () {
-    tests();
-
-    return 0;
-}
