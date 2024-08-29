@@ -373,6 +373,43 @@ void test_for_task_5(){
     assert(result2 == 24);
 }
 
+void task_6(const char *s, size_t length, char *result, size_t *resultLength){
+    char buffer[10];
+    size_t bufferLength = 0;
+    size_t calcResultLength = 0;
+    char num = '1';
+    for (size_t ind = 0; ind < length; ind++) {
+        buffer[bufferLength++] = num++;
+        if (s[ind] == 'I') {
+            while (bufferLength > 0)
+                result[calcResultLength++] = buffer[--bufferLength];
+        }
+    }
+    buffer[bufferLength++] = num;
+    while (bufferLength > 0)
+        result[calcResultLength++] = buffer[--bufferLength];
+    result[calcResultLength] = '\0';
+    *resultLength = calcResultLength;
+}
+
+void test_for_task_6(){
+    char s1[10] = "IIIDIDDD";
+    size_t length1 = 8;
+    char got1[10];
+    size_t resLength1;
+    task_6(s1, length1, got1, &resLength1);
+    char expected1[10] = "123549876";
+    assert(strcmp(got1, expected1) == 0);
+
+    char s2[5] = "DDD";
+    size_t length2 = 3;
+    char got2[5];
+    size_t resLength2;
+    task_6(s2, length2, got2, &resLength2);
+    char expected2[10] = "4321";
+    assert(strcmp(got2, expected2) == 0);
+}
+
 int main(){
     test_for_task_2();
 }
