@@ -107,4 +107,10 @@ void swapColumns(matrix m, int j1, int j2);
 //упорядочивает столбцы матрицы по неубыванию минимальных элементов столбцов
 void sortColsByMinElemnt(matrix a, int (*criteria)(int const*, int));
 
+//умножает матрицы
+matrix mulMatrices(matrix m1, matrix m2);
+
+//Если матрица симметрична, получите квадрат матрицы
+matrix getSquareOfMatrixIfSymmetric(matrix m);
+
 #endif

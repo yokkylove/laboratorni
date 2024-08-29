@@ -34,13 +34,18 @@ void thirdTask(matrix a){
     sortColsByMinElemnt(a, getMin);
 }
 
-int main(){
-    matrix a = createMatrixFromArray((int[]) {5, 3, 6, 2,
-                                              7, 8, 5, 3,
-                                              4, 1, 2, 9},
-                                     3, 4);
-    thirdTask(a);
+//Задача 4: заменяет квадратную матрицу её квадратом
+matrix fouthTask(matrix m){
+    return getSquareOfMatrixIfSymmetric(m);
+}
 
-    outputMatrix(a);
+int main(){
+    matrix a = createMatrixFromArray((int[]) {5, 3, 6,
+                                              7, 8, 5,
+                                              4, 1, 2},
+                                     3, 3);
+    matrix m = fouthTask(a);
+    outputMatrix(m);
+
     return 0;
 }
