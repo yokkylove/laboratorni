@@ -5,6 +5,7 @@
 #include "C:/Users/tanya/CLionProjects/GG/library/date_structurs/matrix.h"
 #include <string.h>
 #include <stdbool.h>
+#include "C:/Users/tanya/CLionProjects/GG/library/date_structurs/vector.h"
 
 typedef struct {
     int row;
@@ -507,6 +508,61 @@ void test_for_task_8(){
     task_8(s2, lengthS2, indexes2, got2);
     char expected2[5] = "apab";
     assert(strcmp(got2, expected2) == 0);
+}
+
+FILE* openFile(char *fileName, char *action){
+    FILE *file = fopen(fileName, action);
+    if (file == NULL) {
+        printf("Ошибка при открытии файла\n");
+        exit(1);
+    }
+    return file;
+}
+
+void fillingFile(int numsArray[], size_t lengthArray, char *fileName){
+    FILE *file = openFile(fileName, "w");
+    for (size_t ind = 0; ind < lengthArray; ind++){
+        fprintf(file, "%d ", numsArray[ind]);
+    }
+    fclose(file);
+}
+
+void readingNumsFilteringAndWriting(vector *v, char *rFileName, int
+controlNum, char *wFileName){
+    FILE *rFile = openFile(rFileName, "r");
+    FILE *wFile = openFile(wFileName, "w");
+    int num;
+    while (fscanf(rFile, "%d", &num) == 1){
+        if (num < controlNum){
+            pushBack(v, num);
+            fprintf(wFile, "%d ", num);
+        }
+    }
+    fclose(rFile);
+    fclose(wFile);
+}
+
+void task_9(int numsArray[], size_t lengthArray, int controlNum, char *firstFileName, char *secondFileName, vector *v){
+    fillingFile(numsArray, lengthArray,firstFileName);
+    readingNumsFilteringAndWriting(v, firstFileName, controlNum, secondFileName);
+    shrinkToFit(v);
+}
+
+void test_for_task_9(){
+    int numsArray[5] = {2, 4, 1, 3, 5};
+    size_t lengthArray = 5;
+    int controlNum = 3;
+    char *firstFileName = "C:/Users/User/Desktop/lab_20_9_1.txt";
+    char *secondFileName = "C:/Users/User/Desktop/lab_20_9_2.txt";
+    vector v = createVector(10);
+
+    task_9(numsArray, lengthArray, controlNum, firstFileName, secondFileName, &v);
+
+    size_t expectedLength = 2;
+    int expectedArrayNums[2] = {2, 1};
+    assert(expectedLength == v.size);
+    for (size_t ind = 0; ind < expectedLength; ind++){
+        assert(v.data[ind] == expectedArrayNums[ind]); }
 }
 
 int main(){
