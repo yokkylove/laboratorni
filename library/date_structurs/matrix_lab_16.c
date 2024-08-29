@@ -62,6 +62,11 @@ int eighthTask(matrix m){
     return getMinInArea(m);
 }
 
+//Задача 9: сортирует по расстоянию до начала координат
+void ninthTask(matrix m){
+    return sortByDistances(m);
+}
+
 int main(){
     matrix a = createMatrixFromArray((int[]) {6, 8, 9, 2,
                                               7, 12, 3, 4,

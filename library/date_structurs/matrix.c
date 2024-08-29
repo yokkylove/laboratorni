@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <assert.h>
 #include "matrix.h"
+#include <math.h>
 
 //размещает в динамической памяти матрицу размером nRows на nCols
 matrix getMemMatrix (int nRows, int nCols) {
@@ -504,3 +505,30 @@ int getMinInArea(matrix m){
     }
     return min[0];
 }
+
+//вычисляет расстояние до начала координат
+float getDistance(int *a, int n) {
+    float distance = 0.0;
+    for (int i = 0; i < n; i++) {
+        distance += a[i] * a[i];
+    }
+    return sqrt(distance);
+}
+
+void insertionSortRowsMatrixByRowCriteriaF(matrix m, float (*criteria)(int *, int)) {
+    for (int i = 1; i < m.nRows; i++) {
+        int *currentRow = m.values[i];
+        int j = i - 1;
+        while (j >= 0 && criteria(m.values[j], m.nCols) > criteria(currentRow, m.nCols)) {
+            m.values[j + 1] = m.values[j];
+            j--;
+        }
+        m.values[j + 1] = currentRow;
+    }
+}
+
+//сортирует по расстоянию до начала координат
+void sortByDistances(matrix m) {
+    insertionSortRowsMatrixByRowCriteriaF(m, getDistance);
+}
+
