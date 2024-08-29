@@ -662,11 +662,11 @@ void reverseWords(char *str) {
 void test_reverseWords1 () {
     char p[MAX_STRING_SIZE] = "Hello world! This is a test.";
     reverseWords(p);
-    assert(strcmp(p, ".test a is This !world Hello") == 0);
+    ASSERT_STRING(p, ".test a is This !world Hello");
 
     char c[MAX_STRING_SIZE] = ".test a is This !world Hello";
     reverseWords(c);
-    assert(strcmp(c, "Hello world! This is a test.") == 0);
+    ASSERT_STRING(c, "Hello world! This is a test.");
 }
 
 void printWordBeforeFirstWordWithA(char *s) {
@@ -807,18 +807,50 @@ void test_lastWordInFirstStringInSecondString(){
     WordDescriptor word1 = lastWordInFirstStringInSecondString(s1_1, s2_1);
     char str1[MAX_WORD_SIZE];
     wordDescriptorToString(word1, str1);
-    assert(strcmp(str1, "he") == 0);
+    ASSERT_STRING(str1, "he");
 
     char s1_2[] = "Hi ha he";
     char s2_2[] = "Hi ha";
     WordDescriptor word2 = lastWordInFirstStringInSecondString(s1_2, s2_2);
     char str2[MAX_WORD_SIZE];
     wordDescriptorToString(word2, str2);
-    assert(strcmp(str2, "ha") == 0);
+    ASSERT_STRING(str2, "ha");
+}
+
+bool hasDuplicateWords(char* sentence) {
+    char* words[100]; // массив для хранения слов
+    int wordCount = 0;
+
+    // Инициализируем массив слов
+    char* word = strtok_(sentence, " ");
+    while (word != NULL) {
+        words[wordCount] = word;
+        wordCount++;
+        word = strtok_(NULL, " ");
+    }
+
+    // Проверяем наличие одинаковых слов
+    for (int i = 0; i < wordCount; i++) {
+        for (int j = i + 1; j < wordCount; j++) {
+            if (strcmp(words[i], words[j]) == 0) {
+                return true; // Найдено одинаковое слово
+            }
+        }
+    }
+
+    return false; // Одинаковых слов не найдено
+}
+
+void test_checkWordInString(){
+    char str1[] = "my friend Hello my";
+    assert(hasDuplicateWords(str1) == true);
+
+    char str2[] = "my friend Hello";
+    assert(hasDuplicateWords(str1) == false);
 }
 
 int main() {
-test_lastWordInFirstStringInSecondString();
+    test_checkWordInString();
 
     return 0;
 }
