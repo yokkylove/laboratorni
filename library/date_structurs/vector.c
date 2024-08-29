@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <malloc.h>
+#include <assert.h>
 #include "vector.h"
 
 //возвращает структуру-дескриптор вектор из n значений.
@@ -76,4 +77,26 @@ void popBack(vector *v){
         exit(1);
     }
     v->size--;
+}
+
+//возвращает указатель на index-ый элемент вектора.
+int* atVector(vector *v, size_t index){
+    assert(v->size > 0);
+    if (index > v->size) {
+        fprintf(stderr, "IndexError: a[%d] is not exists", index);
+        exit(1);
+    }
+    return &v->data[index];
+}
+
+//возвращает указатель на последний элемент вектора.
+int* back(vector *v){
+    assert(v->size > 0);
+    return atVector(v, v->size - 1);
+}
+
+//возвращает указатель на нулевой элемент вектора.
+int* front(vector *v){
+    assert(v->size > 0);
+    return atVector(v, 0);
 }
