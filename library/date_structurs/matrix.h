@@ -1,6 +1,8 @@
 #ifndef GG_MATRIX_H
 #define GG_MATRIX_H
 
+#include <stdbool.h>
+
 typedef struct matrix {
     int **values; // элементы матрицы
     int nRows; // количество рядов
@@ -51,5 +53,21 @@ void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int const*, 
 //выполняет сортировку выбором столбцов матрицы m по неубыванию
 //значения функции criteria применяемой для столбцов.
 void selectionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int*, int));
+
+//возвращает значение ’истина’, если матрица m
+//является квадратной, ложь – в противном случае.
+bool isSquareMatrix(matrix *m);
+
+//возвращает значение ’истина’, если матрицы m1 и m2 равны,
+//ложь – в противном случае.
+bool areTwoMatricesEqual(matrix *m1, matrix *m2);
+
+//возвращает значение ’истина’, если матрица m
+//является единичной, ложь – в противном случае.
+bool isEMatrix(matrix *m);
+
+//возвращает значение ’истина’, если матрица m
+//является симметричной, ложь – в противном случае.
+bool isSymmetricMatrix(matrix *m);
 
 #endif //GG_MATRIX_H
