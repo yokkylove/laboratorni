@@ -1,7 +1,49 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include "C:/Users/tanya/CLionProjects/GG/library/date_structurs/matrix.h"
 
+#define MAX_SIZE 100
 #define MAX_FILE_SIZE 1024
+
+#define ASSERT_FILES(filename1, filename2) assertTXT(filename1, filename2, __FUNCTION__)
+
+typedef struct {
+    int power;
+    int coefficient;
+} Polynomial;
+
+typedef struct {
+    char *initials;
+    int score;
+} Sportsman;
+
+typedef struct {
+    char *name;
+    int unit_price;
+    int all_price;
+    int amount;
+} Goods;
+
+typedef struct {
+    char *name;
+    int amount;
+} OrderedGoods;
+
+int pow_(int base, int exp) {
+    int result = 1;
+    while (exp > 0) {
+        result *= base;
+        exp--;
+    }
+
+    return result;
+}
+
+void appendS(Sportsman *a, size_t *const size, Sportsman value) {
+    a[*size] = (Sportsman) value;
+    (*size)++;
+}
 
 void copyFileContent(const char* sourceFile, const char* destinationFile) {
     FILE *source, *destination;
@@ -293,7 +335,35 @@ void test_for_task_19_5() {
     }
 }
 
-int main() {
-    test_for_task_19_5();
-    return 0;
+void task_19_6(const char *filename, int x) {
+    FILE *file = fopen(filename, "rb");
+    if (file == NULL) {
+        printf("Error opening file\n");
+        exit(-3);
+    }
+
+    FILE *temp_file = fopen("result.txt", "wb");
+    if (!temp_file) {
+        printf("Error creating resulting file.\n");
+        fclose(file);
+        exit(-3);
+    }
+
+    Polynomial poly;
+    while (fread(&poly, sizeof(Polynomial), 1, file)) {
+        if (poly.coefficient * pow_(x, poly.power) != (x * x)) {
+            fwrite(&poly, sizeof(Polynomial), 1, temp_file);
+        }
+    }
+
+    fclose(file);
+    fclose(temp_file);
+}
+
+void test_for_task_19_6() {
+    char *str1 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_6.txt";
+    char *str2 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_6_test.txt";
+    task_19_6(str1, 2);
+
+    ASSERT_TXT(str1, str2);
 }

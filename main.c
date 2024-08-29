@@ -4,7 +4,7 @@ void task_1(){
     unordered_array_set set_A = {(int []) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int []) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int []) {4, 5, 6, 7}, 4, 4};
-    unordered_array_set set_U = {(int []) {1,2,3,4,5,6,7}, 7, 7};
+    unordered_array_set set_U = {(int []) {0, 1,2,3,4,5,6,7}, 8, 8};
 
     //(𝐴 – 𝐶) Ո (C – A Ս B)
     unordered_array_set res1_1 = unordered_array_set_difference(set_A, set_C);
@@ -29,7 +29,7 @@ void task_2(){
     unordered_array_set set_A = {(int []) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int []) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int []) {4, 5, 6, 7}, 4, 4};
-    unordered_array_set set_U = {(int []) {1,2,3,4,5,6,7}, 7, 7};
+    unordered_array_set set_U = {(int []) {0, 1,2,3,4,5,6,7}, 8, 8};
 
     //(𝐴 – 𝐶) Ո (C – A Ս B)
     unordered_array_set res1_1 = unordered_array_set_difference(set_A, set_C);
@@ -56,7 +56,7 @@ void task_3() {
     unordered_array_set set_A = {(int[]) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int[]) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int[]) {4, 5, 6, 7}, 4, 4};
-    unordered_array_set set_U = {(int[]) {1, 2, 3, 4, 5, 6, 7}, 7, 7};
+    unordered_array_set set_U = {(int []) {0, 1,2,3,4,5,6,7}, 8, 8};
 
     //(𝐴 – 𝐶) Ո (C – A Ս B)
     unordered_array_set res1_1 = unordered_array_set_difference(set_A, set_C);
@@ -79,7 +79,7 @@ void task_4() {
     unordered_array_set set_A = {(int[]) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int[]) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int[]) {4, 5, 6, 7}, 4, 4};
-    unordered_array_set set_U = {(int[]) {1, 2, 3, 4, 5, 6, 7}, 7, 7};
+    unordered_array_set set_U = {(int []) {0, 1,2,3,4,5,6,7}, 8, 8};
 
     //(𝐴 – 𝐶) Ո (C – A Ս B)
     unordered_array_set res1_1 = unordered_array_set_difference(set_A, set_C);
@@ -103,7 +103,7 @@ void task_5(){
     unordered_array_set set_A = {(int[]) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int[]) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int[]) {4, 5, 6, 7}, 4, 4};
-    unordered_array_set set_U = {(int[]) {1, 2, 3, 4, 5, 6, 7}, 7, 7};
+    unordered_array_set set_U = {(int []) {0, 1,2,3,4,5,6,7}, 8, 8};
 
     //𝐴 Ո 𝐵 Ս ¬𝐴 Ո 𝐶 Ս 𝐵 Ո C
     unordered_array_set res1_1 = unordered_array_set_complement(set_A, set_U);
@@ -132,7 +132,7 @@ void task_6(){
     unordered_array_set set_A = {(int[]) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int[]) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int[]) {4, 5, 6, 7}, 4, 4};
-    unordered_array_set set_U = {(int[]) {1, 2, 3, 4, 5, 6, 7}, 7, 7};
+    unordered_array_set set_U = {(int []) {0, 1,2,3,4,5,6,7}, 8, 8};
 
     //𝐴 Ո 𝐵 Ս ¬𝐴 Ո 𝐶 Ս 𝐵 Ո C
     unordered_array_set res1_1 = unordered_array_set_complement(set_A, set_U);
@@ -157,7 +157,7 @@ void task_7(){
     unordered_array_set set_A = {(int[]) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int[]) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int[]) {4, 5, 6, 7}, 4, 4};
-    unordered_array_set set_U = {(int[]) {1, 2, 3, 4, 5, 6, 7}, 7, 7};
+    unordered_array_set set_U = {(int []) {0, 1,2,3,4,5,6,7}, 8, 8};
 
     //𝐴 Ո 𝐵 Ս ¬𝐴 Ո 𝐶 Ս 𝐵 Ո C
     unordered_array_set res1_1 = unordered_array_set_complement(set_A, set_U);
@@ -183,7 +183,7 @@ void task_8(){
     unordered_array_set set_A = {(int[]) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int[]) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int[]) {4, 5, 6, 7}, 4, 4};
-    unordered_array_set set_U = {(int[]) {1, 2, 3, 4, 5, 6, 7}, 7, 7};
+    unordered_array_set set_U = {(int []) {0, 1,2,3,4,5,6,7}, 8, 8};
 
     //(𝐴 Ս 𝐵) Ո ((¬𝐴 Ս 𝐵) Ո ¬𝐵 Ս ¬𝐶)
     unordered_array_set res1_1 = unordered_array_set_complement(set_A, set_U);
@@ -210,7 +210,7 @@ void task_9(){
     unordered_array_set set_A = {(int[]) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int[]) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int[]) {4, 5, 6, 7}, 4, 4};
-    unordered_array_set set_U = {(int[]) {1, 2, 3, 4, 5, 6, 7}, 7, 7};
+    unordered_array_set set_U = {(int []) {0, 1,2,3,4,5,6,7}, 8, 8};
 
     //(𝐴 Ս 𝐵) Ո ((¬𝐴 Ս 𝐵) Ո ¬𝐵 Ս ¬𝐶)
     unordered_array_set res1_1 = unordered_array_set_complement(set_A, set_U);
@@ -238,7 +238,7 @@ void task_10(){
     unordered_array_set set_A = {(int[]) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int[]) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int[]) {4, 5, 6, 7}, 4, 4};
-    unordered_array_set set_U = {(int[]) {1, 2, 3, 4, 5, 6, 7}, 7, 7};
+    unordered_array_set set_U = {(int []) {0, 1,2,3,4,5,6,7}, 8, 8};
 
     //𝐶 Δ (𝐴 Ս 𝐵) Δ (𝐶 Ո 𝐴)
     unordered_array_set res1_1 = unordered_array_set_union(set_A, set_B);
