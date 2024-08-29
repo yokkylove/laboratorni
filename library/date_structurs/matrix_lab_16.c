@@ -1,8 +1,9 @@
 #include "matrix.h"
 #include <malloc.h>
+#include <stdio.h>
 
 //Задача 1: меняет местами строки в которых находятся максимальный и минимальный элементы.
-void firstTask(matrix *m) {
+void firstTask(matrix *m)  {
     int maxRowIndex = 0;
     int minRowIndex = 0;
     int maxVal = m->values[0][0];
@@ -20,6 +21,8 @@ void firstTask(matrix *m) {
             }
         }
     }
+
+    swapRows(m, maxRowIndex, minRowIndex);
 }
 
 //Задача 2: упорядочивает строки матрицы по неубыванию наибольших
@@ -35,7 +38,7 @@ void thirdTask(matrix a){
 }
 
 //Задача 4: заменяет квадратную матрицу её квадратом
-matrix fouthTask(matrix m){
+matrix fourthTask(matrix m){
     return getSquareOfMatrixIfSymmetric(m);
 }
 
@@ -44,13 +47,24 @@ void fifthTask(matrix *m){
     transposeIfMatrixHasNotEqualSumOfRows(*m);
 }
 
+//Задача 6: определяет, являются ли две матрицы взаимообратными
+bool sixthTask(matrix m1, matrix m2){
+    return isMutuallyInverseMatrices(m1, m2);
+}
+
+
 int main(){
-    matrix a = createMatrixFromArray((int[]) {5, 3, 6,
-                                              7, 8, 5,
-                                              4, 8, 2},
-                                     3, 3);
-    fifthTask(&a);
-    outputMatrix(a);
+    matrix a = createMatrixFromArray((int[]) {1, 0,
+                                              0, 1},
+                                     2, 2);
+    matrix b = createMatrixFromArray((int[]) {1, 0,
+                                              1, 1},
+                                     2, 2);
+    if (sixthTask(a, b)){
+        printf("true");
+    }else{
+        printf("false");
+    }
 
     return 0;
 }

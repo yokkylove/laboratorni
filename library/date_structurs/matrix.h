@@ -119,4 +119,7 @@ bool isUnique(long long *a, int n);
 //транспонирует матрицу, если среди сумм элементов строк матрицы нет равных
 void transposeIfMatrixHasNotEqualSumOfRows(matrix m);
 
+//определяет, являются ли две матрицы взаимообратными
+bool isMutuallyInverseMatrices(matrix m1, matrix m2);
+
 #endif

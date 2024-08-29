@@ -383,8 +383,8 @@ matrix getSquareOfMatrixIfSymmetric(matrix m) {
 
 //проверяет элементы на уникальность
 bool isUnique(long long *a, int n) {
-    for (int i = 0; i < n; ++i) {
-        for (int j = i + 1; j < n; ++j) {
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
             if (a[i] == a[j]) {
                 return false; // Найден повторяющийся элемент
             }
@@ -395,11 +395,11 @@ bool isUnique(long long *a, int n) {
 
 //транспонирует матрицу, если среди сумм элементов строк матрицы нет равных
 void transposeIfMatrixHasNotEqualSumOfRows(matrix m) {
-    int sum_rows[m.nRows];
+    long long sum_rows[m.nRows];
     for (int i = 0; i < m.nRows; i++) {
         sum_rows[i] = getSum(m.values[i], m.nCols);
     }
-    if (!isUnique(&sum_rows, m.nRows)){
+    if (isUnique(&sum_rows, m.nRows)){
         for (int i = 0; i < m.nRows; i++) {
             long long sum = getSum(m.values[i], m.nCols);
             for (int j = i + 1; j < m.nRows; j++) {
@@ -410,4 +410,28 @@ void transposeIfMatrixHasNotEqualSumOfRows(matrix m) {
             }
         }
     }
+}
+
+//определяет, являются ли две матрицы взаимообратными
+bool isMutuallyInverseMatrices(matrix m1, matrix m2){
+    if (m1.nRows != m2.nRows || m1.nCols != m2.nCols) {
+        return false; // Матрицы должны иметь одинаковое количество строк и столбцов
+    }
+
+    // Проверка произведения матриц на равенство единичной матрице
+    for (int i = 0; i < m1.nRows; i++) {
+        for (int j = 0; j < m2.nCols; j++) {
+            int sum = 0;
+            for (int k = 0; k < m1.nCols; k++) {
+                sum += m1.values[i][k] * m2.values[k][j];
+            }
+            if (i == j && sum != 1) {
+                return false; // Элементы на главной диагонали должны быть равны 1
+            } else if (i != j && sum != 0) {
+                return false; // Элементы вне главной диагонали должны быть равны 0
+            }
+        }
+    }
+
+    return true; // Матрицы взаимнообратные
 }
