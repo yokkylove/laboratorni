@@ -36,6 +36,10 @@ void outputMatrix(matrix m);
 //вывод массива из nMatrices матриц, хранящейся по адресу ms.
 void outputMatrices(matrix *ms, int nMatrices);
 
+//обменивает строки с порядковыми номерами i1 и i2 в матрице m.
+void swapRows(matrix m, int i1, int i2);
 
+//обменивает колонки с порядковыми номерами j1 и j2 в матрице m.
+void swapColumns(matrix m, int j1, int j2);
 
 #endif //GG_MATRIX_H
