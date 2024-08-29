@@ -1,116 +1,64 @@
+#ifndef GG_MATRIX_LAB_16_H
+#define GG_MATRIX_LAB_16_H
+
 #include "matrix.h"
 #include <stdio.h>
-#include "matrix_lab_16.h"
 
 //Задача 1: меняет местами строки в которых находятся максимальный и минимальный элементы.
-void firstTask(matrix *m)  {
-    int maxRowIndex = 0;
-    int minRowIndex = 0;
-    int maxVal = m->values[0][0];
-    int minVal = m->values[0][0];
-
-    for (int i = 0; i < m->nRows; i++) {
-        for (int j = 0; j < m->nCols; j++) {
-            if (m->values[i][j] > maxVal) {
-                maxVal = m->values[i][j];
-                maxRowIndex = i;
-            }
-            if (m->values[i][j] < minVal) {
-                minVal = m->values[i][j];
-                minRowIndex = i;
-            }
-        }
-    }
-
-    swapRows(m, maxRowIndex, minRowIndex);
-}
+void firstTask(matrix *m);
 
 //Задача 2: упорядочивает строки матрицы по неубыванию наибольших
-void secondTask(matrix m){
-    for (int i = 0; i < m.nRows; i++) {
-        sortRowsByMaxElement(m);
-    }
-}
+void secondTask(matrix m);
 
 //Задача 3: упорядочивает столбцы матрицы по неубыванию минимальных элементов столбцов
-void thirdTask(matrix a){
-    sortColsByMinElemnt(a, getMin);
-}
+void thirdTask(matrix a);
 
 //Задача 4: заменяет квадратную матрицу её квадратом
-matrix fourthTask(matrix m){
-    return getSquareOfMatrixIfSymmetric(m);
-}
+matrix fourthTask(matrix m);
 
 //Задача 5: транспонирует матрицу, если среди сумм элементов строк матрицы нет равных
-void fifthTask(matrix *m){
-    transposeIfMatrixHasNotEqualSumOfRows(*m);
-}
+void fifthTask(matrix *m);
 
 //Задача 6: определяет, являются ли две матрицы взаимообратными
-bool sixthTask(matrix m1, matrix m2){
-    return isMutuallyInverseMatrices(m1, m2);
-}
+bool sixthTask(matrix m1, matrix m2);
 
 //Задача 7: находит сумму максимальных элементов всех псевдодиагоналей
-long long seventhTask(matrix m){
-    return findSumOfMaxesOfPseudoDiagonal(m);
-}
+long long seventhTask(matrix m);
 
 //Задача 8: находит минимальный элемент в выделенной области
-int eighthTask(matrix m){
-    return getMinInArea(m);
-}
+int eighthTask(matrix m);
 
 //Задача 9: сортирует по расстоянию до начала координат
-void ninthTask(matrix m){
-    sortByDistances(m);
-}
+void ninthTask(matrix m);
 
 //Задача 10: определяет количество классов эквивалентных строк данной прямоугольной матрицы
-int tenthTask(matrix m){
-    return countEqClassesByRowsSum(m);
-}
+int tenthTask(matrix m);
 
 //Задача 11: определяет количество особых элементов матрицы
-int eleventhTask(matrix m){
-    return getNSpecialElement(m);
-}
+int eleventhTask(matrix m);
 
 //Задача 12: заменяет предпоследнюю строку матрицы первым из столбцов, в котором находится минимальный элемент матрицы
-void twelvethTask(matrix m){
-    swapPenultimateRow(m);
-}
+void twelvethTask(matrix m);
 
 //Задача 13: определяет число матриц, строки которых упорядочены по неубыванию элементов
-int thirteenthTask(matrix *ms, int nMatrix){
-    countNonDescendingRowsMatrices(ms, nMatrix);
-}
+int thirteenthTask(matrix *ms, int nMatrix);
 
 //Задача 14: Выводит матрицы, имеющие наибольшее число нулевых строк
-void fourteenthTask(matrix *ms, int nMatrix){
-    printMatrixWithMaxZeroRows(ms, nMatrix);
-}
+void fourteenthTask(matrix *ms, int nMatrix);
 
 //Задача 15: выводит матрицы с наименьшей нормой
-void fifteenthTask(matrix *ms, int nMatrix){
-    printMatricesWithMinNorm(ms, nMatrix);
-}
+void fifteenthTask(matrix *ms, int nMatrix);
 
 //Задача 16: определяет количество особых элементов в матрице
-int sixteenthTask(matrix m){
-    getNSpecialElement2(m);
-}
+int sixteenthTask(matrix m);
 
 //Задача 17: принимает матрицу m и массив целых чисел b,
 //и возвращает индекс вектора из матрицы m,
 //у которого угол между ним и вектором b максимален.
-int seventeenthTask(matrix m, int *b){
-    return getVectorIndexWithMaxAngle(m, b);
-}
+int seventeenthTask(matrix m, int *b);
 
 //Задача 18: Находит скалярное произведение строки,
 //в которой находится наибольший элемент матрицы, на столбец с наименьшим элементом.
-long long eightteenthTask(matrix m){
-    return getSpecialScalarProduct(m);
-}
+long long eightteenthTask(matrix m);
+
+#endif //GG_MATRIX_LAB_16_H

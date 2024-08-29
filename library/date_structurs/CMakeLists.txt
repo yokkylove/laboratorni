@@ -6,4 +6,5 @@ add_library(date_structurs
         matrix.c
         test_matrix.c
         matrix_lab_16.c
+        test_lab_16.c
 )

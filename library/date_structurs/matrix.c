@@ -770,7 +770,7 @@ double getCosine(int *a, int *b, int n) {
     double lengthB = getVectorLength(b, n);
 
     if (lengthA == 0 || lengthB == 0) {
-        return -1; // Error: Division by zero
+        return -1;
     }
 
     return product / (lengthA * lengthB);
