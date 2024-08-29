@@ -659,7 +659,7 @@ void reverseWords(char *str) {
     free(p); // освобождаем выделенную память
 }
 
-void test_reverseWords1 () {
+void test_reverseWords() {
     char p[MAX_STRING_SIZE] = "Hello world! This is a test.";
     reverseWords(p);
     ASSERT_STRING(p, ".test a is This !world Hello");
@@ -841,7 +841,7 @@ bool hasDuplicateWords(char* sentence) {
     return false; // Одинаковых слов не найдено
 }
 
-void test_checkWordInString(){
+void test_hasDuplicateWords(){
     char str1[] = "my friend Hello my";
     assert(hasDuplicateWords(str1) == true);
 
@@ -1168,8 +1168,89 @@ void test_append() {
     test_for_append3();
 }
 
-int main() {
+// Функция для проверки вхождения букв из заданного слова в строку
+bool checkWordInString(const char *word, const char *str) {
+    bool letters[ALPHABET_SIZE] = {false}; // Инициализируем все элементы как false
+
+    // Помечаем буквы в строке как true
+    for (; *str; ++str) {
+        if (*str >= 'a' && *str <= 'z') {
+            letters[*str - 'a'] = true;
+        } else if (*str >= 'A' && *str <= 'Z') {
+            letters[*str - 'A'] = true;
+        }
+    }
+
+    // Проверяем, входит ли каждая буква из заданного слова в строку
+    for (; *word; ++word) {
+        if (*word >= 'a' && *word <= 'z') {
+            if (!letters[*word - 'a']) {
+                return false;
+            }
+        } else if (*word >= 'A' && *word <= 'Z') {
+            if (!letters[*word - 'A']) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+//Тестирующая функция
+void test_for_checkWordInString1 () {
+    char word[] = "Python";
+    char str[] = "Phonk tyrbo";
+
+    assert(checkWordInString(word, str) == true);
+}
+
+void test_for_checkWordInString2 () {
+    char word[] = "junior";
+    char str[] = "bim bim bam bam";
+
+    assert(checkWordInString(word, str) == false);
+}
+
+void test_for_checkWordInString3 () {
+    char word[] = "oguzok";
+    char str[] = "";
+
+    assert(checkWordInString(word, str) == false);
+}
+
+//Сборник тестов для функции checkWordInString
+void test_checkWordInString () {
+    test_for_checkWordInString1();
+    test_for_checkWordInString2();
+    test_for_checkWordInString3();
+}
+
+//Тесты, тесты, много тестов
+void tests() {
+    test_removeNonLetters();
+    test_removeExtraSpaces();
+    test_digitToStartLetterToEndt();
+    test_replacesNumbersWithSpaces_task4();
+    test_replace_task5();
+    test_areWordsOrdered_task6();
+    test_reverseWordsBag();
+    test_howManyWordsPalindromes_task8();
+    test_mergeString();
+    test_reverseWords();
+    test_getWordBeforeFirstWordWithA();
+    test_lastWordInFirstStringInSecondString();
+    test_hasDuplicateWords();
+    test_findPairWithSameLetters();
+    test_get_words_except_last();
+    test_findWordBeforeFirstOccurrence();
+    test_remove_palindromes();
     test_append();
+    test_checkWordInString();
+}
+
+int main() {
+    tests();
 
     return 0;
 }
