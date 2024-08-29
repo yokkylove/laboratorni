@@ -82,9 +82,14 @@ void twelfthTask(matrix m){
     swapPenultimateRow(m);
 }
 
-//Задача 13:
+//Задача 13: определяет число матриц, строки которых упорядочены по неубыванию элементов
 int thirteenthTask(matrix *ms, int nMatrix){
     countNonDescendingRowsMatrices(ms, nMatrix);
+}
+
+//Задача 14:
+void fourteenthTask(matrix *ms, int nMatrix){
+    printMatrixWithMaxZeroRows(ms, nMatrix);
 }
 
 int main(){
