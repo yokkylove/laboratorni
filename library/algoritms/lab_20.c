@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <assert.h>
+#include "C:/Users/tanya/CLionProjects/GG/library/date_structurs/matrix.h"
 
 typedef struct {
     int row;
@@ -12,7 +13,7 @@ typedef struct {
     int *boardColSize;
 } CellArgs;
 
-int **matrix;
+int **matrix_task_1;
 
 void *increment_submatrix(void *arg) {
     int *query = (int *)arg;
@@ -20,7 +21,7 @@ void *increment_submatrix(void *arg) {
 
     for (int i = row1; i <= row2; i++) {
         for (int j = col1; j <= col2; j++) {
-            matrix[i][j]++;
+            matrix_task_1[i][j]++;
         }
     }
 
@@ -29,9 +30,9 @@ void *increment_submatrix(void *arg) {
 
 void task_1(int n, int num_queries, int **queries) {
 
-    matrix = (int **)malloc(n * sizeof(int *));
+    matrix_task_1 = (int **)malloc(n * sizeof(int *));
     for (int i = 0; i < n; i++) {
-        matrix[i] = (int *)calloc(n, sizeof(int));
+        matrix_task_1[i] = (int *)calloc(n, sizeof(int));
     }
 
     pthread_t threads[num_queries];
@@ -76,7 +77,7 @@ void test_for_task_1() {
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
-            assert(matrix[i][j] == matrix_t[i][j]);
+            assert(matrix_task_1[i][j] == matrix_t[i][j]);
         }
     }
 }
@@ -187,6 +188,50 @@ void test_for_task_2() {
     }
 }
 
-int main(){
+int sortedNumsCompare(const void * first_num, const void * second_num){
+    return (*(int*)first_num - *(int*)second_num);
+}
+
+
+void fillingNumFrameSorted(int *array, matrix m, size_t ind_row, size_t ind_col){ size_t
+            arrayInd = 0;
+    for (size_t mIndRow = ind_row - 1; mIndRow < ind_row + 2; mIndRow++){
+        for(size_t mIndCol = ind_col - 1; mIndCol < ind_col + 2; mIndCol++){
+            if (mIndRow != ind_row || mIndCol != ind_col){
+                array[arrayInd++] = m.values[mIndRow][mIndCol];
+            }
+        }
+    }
+    qsort(array, 8, sizeof(int), sortedNumsCompare);
+}
+
+void task_3(matrix *m, size_t size){
+    int frame[8];
+    for (size_t indRow = 1; indRow < size - 1; indRow++){
+        for(size_t indCol = 1; indCol < size - 1; indCol++){
+            fillingNumFrameSorted(frame, *m, indRow, indCol);
+            int median = (frame[3] + frame[4]) / 2;
+            m->values[indRow][indCol] = median;
+        }
+    }
+}
+
+void test_for_task_3(){
+    size_t size = 3;
+    matrix got = createMatrixFromArray((int[]) {
+            10, 20, 30,
+            25, 35, 45,
+            15, 25, 35
+    }, 3, 3);
+    task_3(&got, size);
+    matrix expected = createMatrixFromArray( (int[]) {
+            10, 20, 30,
+            25, 25, 45,
+            15, 25, 35
+    }, 3, 3);
+    assert(areTwoMatricesEqual(&got, &expected));
+}
+
+int mainsss(){
     test_for_task_2();
 }
