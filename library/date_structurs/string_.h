@@ -28,4 +28,11 @@ char* findNonSpaceReverse(char *rbegin, const char *rend);
 //на ленте памяти, начиная с rbegin и заканчивая rend.
 char* findSpaceReverse(char *rbegin, const char *rend);
 
+//Функция возвращает отрицательное значение, если lhs располагается до rhs
+//в лексикографическом порядке, значение 0, если lhs и rhs
+//равны, иначе – положительное значение.
+int strcmp(const char *lhs, const char *rhs);
+
+
+
 #endif
