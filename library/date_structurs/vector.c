@@ -45,3 +45,35 @@ void deleteVector(vector *v){
     free(v->data);
 }
 
+//проверка на то, является ли вектор пустым.
+bool isEmpty(vector *v){
+    return v->size == 0;
+}
+
+//проверка на то, является ли вектор полным.
+bool isFull(vector *v){
+    return v->size == v->capacity;
+}
+
+//возвращает i-ый элемент вектора v.
+int getVectorValue(vector *v, size_t i){
+    return v->data[i];
+}
+
+//добавляет элемент x в конец вектора v.
+void pushBack(vector *v, int x){
+    if (v->capacity == 0)
+        reserve(v, 1);
+    else if (v->size == v->capacity)
+        reserve(v, v->size * 2);
+    v->data[v->size++] = x;
+}
+
+//удаляет последний элемент из вектора.
+void popBack(vector *v){
+    if (isEmpty(v)) {
+        fprintf(stderr, "The vector is empty, we cannot fulfill your request");
+        exit(1);
+    }
+    v->size--;
+}

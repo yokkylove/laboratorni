@@ -3,7 +3,9 @@ project(GG C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(GG main.c)
+add_executable(GG main.c
+library/date_structurs/test_vector.c
+)
 
 add_subdirectory(library)
 target_link_libraries(GG algoritms)
