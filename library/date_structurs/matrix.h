@@ -172,4 +172,10 @@ int countZeroRows(matrix m);
 //число нулевых строк
 void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix);
 
+//Находит макс. норму матрицы
+int getMaxNorm(matrix m);
+
+//Выводит матрицы с наименьшей нормой.
+void printMatricesWithMinNorm(matrix *ms, int nMatrix);
+
 #endif

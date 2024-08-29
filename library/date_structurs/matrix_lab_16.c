@@ -87,22 +87,20 @@ int thirteenthTask(matrix *ms, int nMatrix){
     countNonDescendingRowsMatrices(ms, nMatrix);
 }
 
-//Задача 14:
+//Задача 14: Выводит матрицы, имеющие наибольшее число нулевых строк
 void fourteenthTask(matrix *ms, int nMatrix){
     printMatrixWithMaxZeroRows(ms, nMatrix);
 }
 
-int main(){
-    matrix a = createMatrixFromArray((int[]) {1, 2, 3,
-                                              4, 5, 6,
-                                              7, 8, 9},
-                                     3, 3);
-    matrix b = createMatrixFromArray((int[]) {3, 2, 5, 4, 6, 8,
-                                              1, 3, 6, 3, 4, 6,
-                                              3, 2, 1, 2, 7, 9},
-                                     3, 6);
-    twelfthTask(a);
+//Задача 15: выводит матрицы с наименьшей нормой
+void fifteenthTask(matrix *ms, int nMatrix){
+    printMatricesWithMinNorm(ms, nMatrix);
+}
 
-    outputMatrix(a);
-    return 0;
+int main(){
+    matrix a = createMatrixFromArray((int[]) {2, 3, 5, 5, 4,
+                                              6, 2, 3, 8, 12,
+                                              0,1,2,1,2},
+                                     3, 5);
+
 }
