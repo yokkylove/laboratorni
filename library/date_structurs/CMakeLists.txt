@@ -9,4 +9,5 @@ add_library(date_structurs
         test_lab_16.c
         string_.c
         test_string.c
+        lab_18.c
 )

@@ -97,9 +97,3 @@ void test1(){
     test_copyIfReverse();
     test_findSpaceReverse();
 }
-
-int main(){
-    test1();
-
-    return 0;
-}

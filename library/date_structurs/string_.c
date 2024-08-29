@@ -113,3 +113,12 @@ char* copyIfReverse(char *rbeginSource, const char *rendSource, char
     *rbeginDest = '\0';
     return rbeginDest;
 }
+
+//возвращает указатель на конец строки
+char* getEndOfString(const char* str) {
+    const char* end = str;
+    while (*end != '\0') {
+        end++;
+    }
+    return (char*) end;
+}

@@ -53,4 +53,7 @@ char* copyIf(char *beginSource, const char *endSource, char
 char* copyIfReverse(char *rbeginSource, const char *rendSource, char
 *beginDestination, int (*f)(int));
 
+//возвращает указатель на конец строки
+char* getEndOfString(const char* str);
+
 #endif
