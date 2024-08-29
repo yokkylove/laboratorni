@@ -3,4 +3,5 @@ add_library(date_structurs
         vector.c
         test_vector.c
         voidVector.c
+        matrix.c
 )

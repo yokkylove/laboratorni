@@ -239,6 +239,12 @@ build library/date_structurs/CMakeFiles/date_structurs.dir/voidVector.c.obj: C_C
   OBJECT_DIR = library\date_structurs\CMakeFiles\date_structurs.dir
   OBJECT_FILE_DIR = library\date_structurs\CMakeFiles\date_structurs.dir
 
+build library/date_structurs/CMakeFiles/date_structurs.dir/matrix.c.obj: C_COMPILER__date_structurs_unscanned_Debug C$:/Users/tanya/CLionProjects/GG/library/date_structurs/matrix.c || cmake_object_order_depends_target_date_structurs
+  DEP_FILE = library\date_structurs\CMakeFiles\date_structurs.dir\matrix.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = library\date_structurs\CMakeFiles\date_structurs.dir
+  OBJECT_FILE_DIR = library\date_structurs\CMakeFiles\date_structurs.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target date_structurs
@@ -247,7 +253,7 @@ build library/date_structurs/CMakeFiles/date_structurs.dir/voidVector.c.obj: C_C
 #############################################
 # Link the static library library\date_structurs\libdate_structurs.a
 
-build library/date_structurs/libdate_structurs.a: C_STATIC_LIBRARY_LINKER__date_structurs_Debug library/date_structurs/CMakeFiles/date_structurs.dir/bitset.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/vector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/test_vector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/voidVector.c.obj
+build library/date_structurs/libdate_structurs.a: C_STATIC_LIBRARY_LINKER__date_structurs_Debug library/date_structurs/CMakeFiles/date_structurs.dir/bitset.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/vector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/test_vector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/voidVector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/matrix.c.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = library\date_structurs\CMakeFiles\date_structurs.dir
   POST_BUILD = cd .
