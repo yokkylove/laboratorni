@@ -930,8 +930,87 @@ void test_get_words_except_last(){
     ASSERT_STRING(modified_str2, "haha");
 }
 
+//Находит слово, предшествующее первому вхождению 𝑤 в 𝑠1
+char *findWordBeforeFirstOccurrence(char *s1, char *s2) {
+    BagOfWords bag;
+    bag.size = 0;
+
+    char *delimiters = " ,.?!;:"; // пример разделителей
+    char *token = strtok_(s1, delimiters);
+    while (token != NULL) {
+        WordDescriptor word;
+        word.begin = token;
+        word.end = token + strlen_(token);
+        bag.words[bag.size++] = word;
+        token = strtok_(NULL, delimiters);
+    }
+
+    char *w = NULL;
+    token = strtok_(s2, delimiters);
+    while (token != NULL) {
+        for (size_t i = 0; i < bag.size; i++) {
+            if (strcmp(bag.words[i].begin, token) == 0) {
+                w = token;
+                break;
+            }
+        }
+        if (w != NULL) {
+            break;
+        }
+        token = strtok_(NULL, delimiters);
+    }
+
+    if (w == NULL) {
+        return "0";
+    }
+
+    for (size_t i = 0; i < bag.size; i++) {
+        if (strcmp(bag.words[i].begin, w) == 0) {
+            if (i > 0) {
+                return bag.words[i - 1].begin;
+            } else {
+                return "0";
+            }
+        }
+    }
+
+    return "0";
+}
+
+// Тестирующая функция
+void test_for_findWordBeforeFirstOccurrence1() {
+    char s1[] = "Python is awsome!";
+    char s2[] = "C is good too";
+
+    char *wordBeforeW = findWordBeforeFirstOccurrence(s1, s2);
+    ASSERT_STRING("Python", wordBeforeW);
+}
+
+void test_for_findWordBeforeFirstOccurrence2() {
+    char s1[] = "No common words";
+    char s2[] = "Different strings";
+
+    char *wordBeforeW = findWordBeforeFirstOccurrence(s1, s2);
+    ASSERT_STRING("0", wordBeforeW);
+}
+
+void test_for_findWordBeforeFirstOccurrence3() {
+    char s1[] = "no words before w";
+    char s2[] = "hehe no";
+
+    char *wordsBeforeW = findWordBeforeFirstOccurrence(s1, s2);
+    ASSERT_STRING("0", wordsBeforeW);
+}
+
+//Сборник тестов для функции FindWordBeforeFirstOccurrence
+void test_findWordBeforeFirstOccurrence() {
+    test_for_findWordBeforeFirstOccurrence1();
+    test_for_findWordBeforeFirstOccurrence2();
+    test_for_findWordBeforeFirstOccurrence3();
+}
+
 int main() {
-    test_get_words_except_last();
+    test_findWordBeforeFirstOccurrence();
 
     return 0;
 }
