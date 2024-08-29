@@ -911,8 +911,27 @@ void test_findPairWithSameLetters() {
     assert(findPairWithSameLetters(&bag2) == 0);
 }
 
+// Функция для получения строки из слов, которые отличны от последнего слова
+char *get_words_except_last(char *str) {
+    char *last_space = strrchr_(str, ' '); // Находим последнее пробельное символ
+    if (last_space != NULL) {
+        *last_space = '\0'; // Удаляем последнее слово из строки
+    }
+    return str; // Возвращаем указатель на начало изменённой строки
+}
+
+void test_get_words_except_last(){
+    char str1[] = "Hello world this is a test";
+    char *modified_str1 = get_words_except_last(str1);
+    ASSERT_STRING(modified_str1, "Hello world this is a");
+
+    char str2[] = "hihi haha";
+    char *modified_str2 = get_words_except_last(str2);
+    ASSERT_STRING(modified_str2, "haha");
+}
+
 int main() {
-    test_findPairWithSameLetters();
+    test_get_words_except_last();
 
     return 0;
 }
