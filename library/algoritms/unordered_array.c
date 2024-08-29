@@ -204,7 +204,8 @@ bool unordered_array_set_isInclusion(unordered_array_set set1,
 
     return true;
 }
-//проверяет, является ли set1 строгим подмножеством set2, то есть содержит ли set1 все элементы set2 и имеет меньшее количество элементов.
+//проверяет, является ли set1 строгим подмножеством set2, то есть содержит ли set1 все элементы set2 и
+//имеет меньшее количество элементов.
 bool unordered_array_set_isStrictInclusion(unordered_array_set set1, unordered_array_set set2) {
     if (set1.size >= set2.size)
         return false;

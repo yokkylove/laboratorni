@@ -15,7 +15,7 @@ typedef struct unordered_array_set {
 } unordered_array_set ;
 
 // возвращает пустое множество для capacity элементов
-unordered_array_set unordered_array_set_create ( size_t capacity ) ;
+unordered_array_set unordered_array_set_create (size_t capacity) ;
 
 // возвращает множество, состоящее из элементов массива a размера size.
 unordered_array_set unordered_array_set_create_from_array (const int *a , size_t size) ;

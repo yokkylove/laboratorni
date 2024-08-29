@@ -4,7 +4,7 @@ project(GG C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(GG main.c
-library/date_structurs/test_vector.c
+library/date_structurs/test_matrix.c
 )
 
 add_subdirectory(library)

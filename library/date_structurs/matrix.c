@@ -1,6 +1,5 @@
 #include "matrix.h"
 #include <malloc.h>
-#include <stdio.h>
 #include <assert.h>
 
 //размещает в динамической памяти матрицу размером nRows на nCols.
@@ -22,17 +21,17 @@ matrix *getArrayOfMatrices(int nMatrices, int nRows, int nCols) {
 }
 
 //освобождает память, выделенную под хранение матрицы m.
-void freeMatrix(matrix m) {
-    for (int i = 0; i < m.nRows; i++) {
-        free(m.values[i]);
+void freeMatrix(matrix *m) {
+    for (int i = 0; i < m->nRows; i++) {
+        free(m->values[i]);
     }
-    free(m.values);
+    free(m->values);
 }
 
 //освобождает память, выделенную под хранение массива ms из nMatrices матриц.
 void freeMatrices(matrix *ms, int nMatrices) {
     for (int i = 0; i < nMatrices; i++) {
-        freeMatrix(ms[i]);
+        freeMatrix(&ms[i]);
     }
     free(ms);
 }
@@ -77,10 +76,10 @@ void swap_pointers(int **a, int **b) {
 }
 
 //обменивает строки с порядковыми номерами i1 и i2 в матрице m.
-void swapRows(matrix m, int i1, int i2) {
-    assert(0 <= i1 && i1 < m.nRows);
-    assert(0 <= i2 && i2 < m.nRows);
-    swap_pointers(&m.values[i1], &m.values[i2]);
+void swapRows(matrix *m, int i1, int i2) {
+    assert(0 <= i1 && i1 < m->nRows);
+    assert(0 <= i2 && i2 < m->nRows);
+    swap_pointers(&m->values[i1], &m->values[i2]);
 }
 
 void swap(int *a, int *b) {
@@ -98,7 +97,7 @@ void swapColumns(matrix m, int j1, int j2) {
     }
 }
 
-int getSum(int const *a, int n) {
+int getSum(int *a, int n) {
     int sum = 0;
     for (int i = 0; i < n; i++) {
         sum += a[i];
@@ -107,8 +106,8 @@ int getSum(int const *a, int n) {
 }
 
 //выполняет сортировку вставками строк матрицы m по неубыванию
-// значения функции criteria применяемой для строк.
-void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int const*, int)) {
+//значения функции criteria применяемой для строк.
+void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int)) {
     int *criteriaValues = (int*)malloc(sizeof(int) * m.nRows);
     for (int i = 0; i < m.nRows; i++) {
         criteriaValues[i] = criteria(m.values[i], m.nCols);
@@ -117,13 +116,13 @@ void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int const*, 
     for (int i = 0; i < m.nRows; i++) {
         int minIndex = i;
         for (int j = i + 1; j < m.nRows; j++) {
-            if (criteriaValues[j] < criteriaValues[minIndex]) {
+            if (criteriaValues[j] > criteriaValues[minIndex]) {
                 minIndex = j;
             }
         }
         if (i != minIndex) {
             swap(&criteriaValues[i], &criteriaValues[minIndex]);
-            swapRows(m, i, minIndex);
+            swapRows(&m, i, minIndex);
         }
     }
     free(criteriaValues);
@@ -144,7 +143,7 @@ void selectionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int*, int)) 
     for (int i = 0; i < m.nCols; i++) {
         int minIndex = i;
         for (int j = i + 1; j < m.nCols; j++) {
-            if (criteriaValues[j] < criteriaValues[minIndex]) {
+            if (criteriaValues[j] > criteriaValues[minIndex]) {
                 minIndex = j;
             }
         }
@@ -233,7 +232,7 @@ void transposeMatrix(matrix *m) {
                 t.values[j][i] = m->values[i][j];
             }
         }
-        freeMatrix(*m);
+        freeMatrix(&m);
         *m = t;
 }
 
@@ -262,4 +261,31 @@ position getMaxValuePos(matrix m){
         }
     }
     return maxPos;
+}
+
+//возвращает матрицу размера nRows на nCols, построенную из элементов массива a.
+matrix createMatrixFromArray(const int *a, int nRows, int nCols) {
+    matrix m = getMatrix(nRows, nCols);
+    int k = 0;
+    for (int i = 0; i < nRows; i++) {
+        for (int j = 0; j < nCols; j++) {
+            m.values[i][j] = a[k++];
+        }
+        return m;
+    }
+}
+
+//возвращает указатель на нулевую матрицу массива из nMatrices матриц, размещённых в динамической памяти,
+//построенных из элементов массива a.
+matrix *createArrayOfMatrixFromArray(const int *values, size_t nMatrices, size_t nRows, size_t nCols) {
+    matrix *ms = getArrayOfMatrices(nMatrices, nRows, nCols);
+    int l = 0;
+    for (size_t k = 0; k < nMatrices; k++) {
+        for (size_t i = 0; i < nRows; i++) {
+            for (size_t j = 0; j < nCols; j++) {
+                ms[k].values[i][j] = values[l++];
+            }
+        }
+    }
+    return ms;
 }

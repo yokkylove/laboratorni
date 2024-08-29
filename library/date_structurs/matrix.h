@@ -2,6 +2,7 @@
 #define GG_MATRIX_H
 
 #include <stdbool.h>
+#include <stdio.h>
 
 typedef struct matrix {
     int **values; // элементы матрицы
@@ -21,7 +22,7 @@ matrix getMatrix(int nRows, int nCols);
 matrix *getArrayOfMatrices(int nMatrices, int nRows, int nCols);
 
 //освобождает память, выделенную под хранение матрицы m.
-void freeMatrix(matrix m);
+void freeMatrix(matrix *m);
 
 //освобождает память, выделенную под хранение массива ms из nMatrices матриц.
 void freeMatrices(matrix *ms, int nMatrices);
@@ -39,16 +40,16 @@ void outputMatrix(matrix m);
 void outputMatrices(matrix *ms, int nMatrices);
 
 //обменивает строки с порядковыми номерами i1 и i2 в матрице m.
-void swapRows(matrix m, int i1, int i2);
+void swapRows(matrix *m, int i1, int i2);
 
 //обменивает колонки с порядковыми номерами j1 и j2 в матрице m.
 void swapColumns(matrix m, int j1, int j2);
 
-int getSum(int const *a, int n);
+int getSum(int *a, int n);
 
 //выполняет сортировку вставками строк матрицы m по неубыванию
 // значения функции criteria применяемой для строк.
-void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int const*, int));
+void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int));
 
 //выполняет сортировку выбором столбцов матрицы m по неубыванию
 //значения функции criteria применяемой для столбцов.
@@ -81,5 +82,12 @@ position getMinValuePos(matrix m);
 
 //возвращает позицию максимального элемента матрицы m.
 position getMaxValuePos(matrix m);
+
+//возвращает матрицу размера nRows на nCols, построенную из элементов массива a.
+matrix createMatrixFromArray(const int *a, int nRows, int nCols);
+
+//возвращает указатель на нулевую матрицу массива из nMatrices матриц, размещённых в динамической памяти,
+//построенных из элементов массива a.
+matrix *createArrayOfMatrixFromArray(const int *values, size_t nMatrices, size_t nRows, size_t nCols);
 
 #endif //GG_MATRIX_H
