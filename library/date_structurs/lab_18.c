@@ -51,8 +51,52 @@ void test_removeNonLetters() {
     test_removeNonLetters4();
 }
 
+//сокращает количество пробелов между словами данного предложения до одного
+void removeExtraSpaces(char *s) { char *begin = s;
+    char *destination = begin; char last = *begin;
+    while (*begin != '\0') {
+        if (*begin != last || last != ' ')
+            *destination++ = *begin;
+        last = *begin++;
+    }
+    if (last == ' ') destination--;
+    *destination = '\0';
+}
+
+void test_removeExtraSpaces1() {
+    char s[] = "Smolyakov Artyom";
+    removeExtraSpaces(s);
+    ASSERT_STRING("Smolyakov Artyom", s);
+}
+
+void test_removeExtraSpaces2() {
+    char s[] = "Smolyakov Artyom ";
+    removeExtraSpaces(s);
+    ASSERT_STRING("Smolyakov Artyom", s);
+}
+
+void test_removeExtraSpaces3() {
+    char s[] = " Smolyakov Artyom";
+    removeExtraSpaces(s);
+    ASSERT_STRING("Smolyakov Artyom", s);
+}
+
+void test_removeExtraSpaces4() {
+    char s[] = "Smolyakov Artyom ";
+    removeExtraSpaces(s);
+    ASSERT_STRING("Smolyakov Artyom", s);
+}
+
+void test_removeExtraSpaces() {
+    test_removeExtraSpaces1();
+    test_removeExtraSpaces2();
+    test_removeExtraSpaces3();
+    test_removeExtraSpaces4();
+}
+
 int main(){
     test_removeNonLetters();
+    test_removeExtraSpaces();
 
     return 0;
 }
