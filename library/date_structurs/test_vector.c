@@ -91,12 +91,14 @@ void test_popBack_notEmptyVector() {
     assert(v.capacity == 1);
 }
 
+//проверяет работоспособность функции atVector.
 void test_atVector_notEmptyVector1() {
     vector v = createVector(0);
     pushBack(&v, 10);
     assert(&(v.data[0]) == atVector(&v, 0));
 }
 
+//проверяет работоспособность функции atVector.
 void test_atVector_notEmptyVector2() {
     vector v = createVector(0);
     pushBack(&v, 10);
@@ -106,6 +108,7 @@ void test_atVector_notEmptyVector2() {
     assert(v.data[1] == 11);
 }
 
+//проверяет работоспособность функции atVector.
 void test_atVector_requestToLastElement1() {
     vector v = createVector(0);
     pushBack(&v, 10);
@@ -115,6 +118,7 @@ void test_atVector_requestToLastElement1() {
     assert(v.data[2] == 12);
 }
 
+//проверяет работоспособность функции atVector.
 void test_atVector_requestToLastElement2() {
     vector v = createVector(0);
     pushBack(&v, 10);
@@ -122,6 +126,7 @@ void test_atVector_requestToLastElement2() {
     assert(v.data[0] == 10);
 }
 
+//проверяет работоспособность функции atVector.
 void test_atVector_requestToLastElement3() {
     vector v = createVector(0);
     pushBack(&v, 10);
@@ -131,6 +136,7 @@ void test_atVector_requestToLastElement3() {
     assert(v.data[0] == 10);
 }
 
+//проверяет работоспособность функции back.
 void test_back_ElementsInVector1() {
     vector v = createVector(0);
     pushBack(&v, 25);
@@ -140,6 +146,7 @@ void test_back_ElementsInVector1() {
     assert(v.data[2] == 2003);
 }
 
+//проверяет работоспособность функции back.
 void test_back_ElementsInVector2() {
     vector v = createVector(0);
     pushBack(&v, 25);
@@ -150,6 +157,7 @@ void test_back_ElementsInVector2() {
     assert(v.data[v.size - 1] == 2);
 }
 
+//проверяет работоспособность функции back.
 void test_back_oneElementInVector() {
     vector v = createVector(0);
     pushBack(&v, 10);
@@ -157,6 +165,7 @@ void test_back_oneElementInVector() {
     assert(v.data[0] == 10);
 }
 
+//проверяет работоспособность функции front.
 void test_front_oneElementInVector() {
     vector v = createVector(0);
     pushBack(&v, 25);
@@ -164,6 +173,7 @@ void test_front_oneElementInVector() {
     assert(v.data[0] == 25);
 }
 
+//проверяет работоспособность функции front.
 void test_front_elementsInVector() {
     vector v = createVector(0);
     pushBack(&v, 25);
