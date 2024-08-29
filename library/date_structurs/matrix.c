@@ -6,51 +6,59 @@
 //размещает в динамической памяти матрицу размером nRows на nCols.
 matrix getMatrix(int nRows, int nCols) {
     int **values = (int **) malloc(sizeof(int*) * nRows);
-    for (int i = 0; i < nRows; i++)
+    for (int i = 0; i < nRows; i++){
         values[i] = (int *) malloc(sizeof(int) * nCols);
+    }
     return (matrix){values, nRows, nCols};
 }
 
 //размещает в динамической памяти массив из nMatrices матриц размером nRows на nCols.
 matrix *getArrayOfMatrices(int nMatrices, int nRows, int nCols) {
     matrix *ms = (matrix*) malloc(sizeof(matrix) * nMatrices);
-    for (int i = 0; i < nMatrices; i++)
+    for (int i = 0; i < nMatrices; i++) {
         ms[i] = getMatrix(nRows, nCols);
+    }
     return ms;
 }
 
 //освобождает память, выделенную под хранение матрицы m.
 void freeMatrix(matrix m) {
-    for (int i = 0; i < m.nRows; i++)
+    for (int i = 0; i < m.nRows; i++) {
         free(m.values[i]);
+    }
     free(m.values);
 }
 
 //освобождает память, выделенную под хранение массива ms из nMatrices матриц.
 void freeMatrices(matrix *ms, int nMatrices) {
-    for (int i = 0; i < nMatrices; i++)
+    for (int i = 0; i < nMatrices; i++) {
         freeMatrix(ms[i]);
+    }
     free(ms);
 }
 
 //ввод матрицы m.
 void inputMatrix(matrix *m) {
-    for (int i = 0; i < m->nRows; i++)
-        for (int j = 0; j < m->nCols; j++)
+    for (int i = 0; i < m->nRows; i++) {
+        for (int j = 0; j < m->nCols; j++) {
             scanf("%d", &m->values[i][j]);
+        }
+    }
 }
 
 //ввод массива из nMatrices матриц, хранящейся по адресу ms.
 void inputMatrices(matrix *ms, int nMatrices) {
-    for (int i = 0; i < nMatrices; i++)
+    for (int i = 0; i < nMatrices; i++) {
         inputMatrix(&ms[i]);
+    }
 }
 
 //вывод матрицы m.
 void outputMatrix(matrix m) {
     for (int i = 0; i < m.nRows; i++) {
-        for (int j = 0; j < m.nCols; j++)
+        for (int j = 0; j < m.nCols; j++) {
             printf("%d ", m.values[i][j]);
+        }
         printf("\n");
     }
 }
@@ -85,7 +93,67 @@ void swap(int *a, int *b) {
 void swapColumns(matrix m, int j1, int j2) {
     assert(0 <= j1 && j1 < m.nRows);
     assert(0 <= j2 && j2 < m.nRows);
-    for (int i = 0; i < m.nRows; i++)
+    for (int i = 0; i < m.nRows; i++) {
         swap(&m.values[i][j1], &m.values[i][j2]);
+    }
+}
+
+int getSum(int const *a, int n) {
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += a[i];
+    }
+    return sum;
+}
+
+//выполняет сортировку вставками строк матрицы m по неубыванию
+// значения функции criteria применяемой для строк.
+void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int const*, int)) {
+    int *criteriaValues = (int*)malloc(sizeof(int) * m.nRows);
+    for (int i = 0; i < m.nRows; i++) {
+        criteriaValues[i] = criteria(m.values[i], m.nCols);
+    }
+
+    for (int i = 0; i < m.nRows; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < m.nRows; j++) {
+            if (criteriaValues[j] < criteriaValues[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (i != minIndex) {
+            swap(&criteriaValues[i], &criteriaValues[minIndex]);
+            swapRows(m, i, minIndex);
+        }
+    }
+    free(criteriaValues);
+}
+
+//выполняет сортировку выбором столбцов матрицы m по неубыванию
+//значения функции criteria применяемой для столбцов.
+void selectionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int*, int)) {
+    int *criteriaValues = (int*)malloc(sizeof(int) * m.nCols);
+    int *column = (int*)malloc(sizeof(int) * m.nRows);
+    for (int j = 0; j < m.nCols; j++) {
+        for (int i = 0; i < m.nRows; i++) {
+            column[i] = m.values[i][j];
+        }
+        criteriaValues[j] = criteria(column, m.nCols);
+    }
+
+    for (int i = 0; i < m.nCols; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < m.nCols; j++) {
+            if (criteriaValues[j] < criteriaValues[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (i != minIndex) {
+            swap(&criteriaValues[i], &criteriaValues[minIndex]);
+            swapColumns(m, i, minIndex);
+        }
+    }
+    free(column);
+    free(criteriaValues);
 }
 

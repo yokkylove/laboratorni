@@ -42,4 +42,14 @@ void swapRows(matrix m, int i1, int i2);
 //обменивает колонки с порядковыми номерами j1 и j2 в матрице m.
 void swapColumns(matrix m, int j1, int j2);
 
+int getSum(int const *a, int n);
+
+//выполняет сортировку вставками строк матрицы m по неубыванию
+// значения функции criteria применяемой для строк.
+void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int const*, int));
+
+//выполняет сортировку выбором столбцов матрицы m по неубыванию
+//значения функции criteria применяемой для столбцов.
+void selectionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int*, int));
+
 #endif //GG_MATRIX_H
