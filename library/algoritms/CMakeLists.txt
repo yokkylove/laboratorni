@@ -3,4 +3,5 @@ add_library(algoritms
         ordered_array.c
         unordered_array.c
         lab_19.c
+        lab_20.c
 )

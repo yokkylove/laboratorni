@@ -180,6 +180,12 @@ build library/algoritms/CMakeFiles/algoritms.dir/lab_19.c.obj: C_COMPILER__algor
   OBJECT_DIR = library\algoritms\CMakeFiles\algoritms.dir
   OBJECT_FILE_DIR = library\algoritms\CMakeFiles\algoritms.dir
 
+build library/algoritms/CMakeFiles/algoritms.dir/lab_20.c.obj: C_COMPILER__algoritms_unscanned_Debug C$:/Users/tanya/CLionProjects/GG/library/algoritms/lab_20.c || cmake_object_order_depends_target_algoritms
+  DEP_FILE = library\algoritms\CMakeFiles\algoritms.dir\lab_20.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = library\algoritms\CMakeFiles\algoritms.dir
+  OBJECT_FILE_DIR = library\algoritms\CMakeFiles\algoritms.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target algoritms
@@ -188,7 +194,7 @@ build library/algoritms/CMakeFiles/algoritms.dir/lab_19.c.obj: C_COMPILER__algor
 #############################################
 # Link the static library library\algoritms\libalgoritms.a
 
-build library/algoritms/libalgoritms.a: C_STATIC_LIBRARY_LINKER__algoritms_Debug library/algoritms/CMakeFiles/algoritms.dir/array.c.obj library/algoritms/CMakeFiles/algoritms.dir/ordered_array.c.obj library/algoritms/CMakeFiles/algoritms.dir/unordered_array.c.obj library/algoritms/CMakeFiles/algoritms.dir/lab_19.c.obj
+build library/algoritms/libalgoritms.a: C_STATIC_LIBRARY_LINKER__algoritms_Debug library/algoritms/CMakeFiles/algoritms.dir/array.c.obj library/algoritms/CMakeFiles/algoritms.dir/ordered_array.c.obj library/algoritms/CMakeFiles/algoritms.dir/unordered_array.c.obj library/algoritms/CMakeFiles/algoritms.dir/lab_19.c.obj library/algoritms/CMakeFiles/algoritms.dir/lab_20.c.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = library\algoritms\CMakeFiles\algoritms.dir
   POST_BUILD = cd .

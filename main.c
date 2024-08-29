@@ -1,6 +1,6 @@
 #include "library/algoritms/unordered_array.h"
 
-void task_1(){
+void task_1_(){
     unordered_array_set set_A = {(int []) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int []) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int []) {4, 5, 6, 7}, 4, 4};
@@ -25,7 +25,7 @@ void task_1(){
     }
 }
 
-void task_2(){
+void task_2_(){
     unordered_array_set set_A = {(int []) {1, 3, 5, 7}, 4, 4};
     unordered_array_set set_B = {(int []) {2, 3, 6, 7}, 4, 4};
     unordered_array_set set_C = {(int []) {4, 5, 6, 7}, 4, 4};
