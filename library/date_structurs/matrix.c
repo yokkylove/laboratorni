@@ -213,3 +213,26 @@ bool isSymmetricMatrix(matrix *m) {
 
     return true; //матрица симметрична
 }
+
+//транспонирует квадратную матрицу m.
+void transposeSquareMatrix(matrix *m) {
+    for (int i = 0; i < m->nRows; i++) {
+        for (int j = i + 1; j < m->nCols; j++) {
+            int temp = m->values[i][j];
+            m->values[i][j] = m->values[j][i];
+            m->values[j][i] = temp;
+        }
+    }
+}
+
+//транспонирует матрицу m.
+void transposeMatrix(matrix *m) {
+        matrix t = getMatrix(m->nRows, m->nCols);
+        for (int i = 0; i < m->nRows; i++) {
+            for (int j = 0; j < m->nCols; j++) {
+                t.values[j][i] = m->values[i][j];
+            }
+        }
+        freeMatrix(*m);
+        *m = t;
+}
