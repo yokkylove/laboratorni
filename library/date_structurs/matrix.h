@@ -16,7 +16,7 @@ typedef struct position {
 } position;
 
 // функция-критерий для сравнения строк по сумме элементов
-int getSum(int *a, int nCols);
+long long getSum(int *a, int nCols);
 
 // функция-критерий для сравнения строк по максимальному элементу
 int getMax(int* a, int n);
@@ -112,5 +112,11 @@ matrix mulMatrices(matrix m1, matrix m2);
 
 //Если матрица симметрична, получите квадрат матрицы
 matrix getSquareOfMatrixIfSymmetric(matrix m);
+
+//проверяет элементы на уникальность
+bool isUnique(long long *a, int n);
+
+//транспонирует матрицу, если среди сумм элементов строк матрицы нет равных
+void transposeIfMatrixHasNotEqualSumOfRows(matrix m);
 
 #endif

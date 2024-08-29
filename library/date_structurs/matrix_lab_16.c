@@ -39,13 +39,18 @@ matrix fouthTask(matrix m){
     return getSquareOfMatrixIfSymmetric(m);
 }
 
+//Задача 5: транспонирует матрицу, если среди сумм элементов строк матрицы нет равных
+void fifthTask(matrix *m){
+    transposeIfMatrixHasNotEqualSumOfRows(*m);
+}
+
 int main(){
     matrix a = createMatrixFromArray((int[]) {5, 3, 6,
                                               7, 8, 5,
-                                              4, 1, 2},
+                                              4, 8, 2},
                                      3, 3);
-    matrix m = fouthTask(a);
-    outputMatrix(m);
+    fifthTask(&a);
+    outputMatrix(a);
 
     return 0;
 }
