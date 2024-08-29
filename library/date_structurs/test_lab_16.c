@@ -385,7 +385,7 @@ void test_eightteenthTask () {
     test_for_eightteenthTask_2();
 }
 
-void test () {
+void tests() {
     test_firstTask();
     test_secondTask();
     test_thirdTask();

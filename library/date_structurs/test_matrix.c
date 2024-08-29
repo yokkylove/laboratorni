@@ -332,7 +332,7 @@ void test_getMaxValuePos() {
     freeMemMatrix(&a);
 }
 
-void tests () {
+void test() {
     test_getMatrix();
     test_getArrayOfMatrices();
     test_freeMatrix();

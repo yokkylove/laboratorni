@@ -8,4 +8,5 @@ add_library(date_structurs
         matrix_lab_16.c
         test_lab_16.c
         string_.c
+        test_string.c
 )

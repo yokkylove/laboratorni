@@ -73,6 +73,12 @@ build CMakeFiles/GG.dir/library/date_structurs/test_lab_16.c.obj: C_COMPILER__GG
   OBJECT_DIR = CMakeFiles\GG.dir
   OBJECT_FILE_DIR = CMakeFiles\GG.dir\library\date_structurs
 
+build CMakeFiles/GG.dir/library/date_structurs/test_string.c.obj: C_COMPILER__GG_unscanned_Debug C$:/Users/tanya/CLionProjects/GG/library/date_structurs/test_string.c || cmake_object_order_depends_target_GG
+  DEP_FILE = CMakeFiles\GG.dir\library\date_structurs\test_string.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\GG.dir
+  OBJECT_FILE_DIR = CMakeFiles\GG.dir\library\date_structurs
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target GG
@@ -81,7 +87,7 @@ build CMakeFiles/GG.dir/library/date_structurs/test_lab_16.c.obj: C_COMPILER__GG
 #############################################
 # Link the executable GG.exe
 
-build GG.exe: C_EXECUTABLE_LINKER__GG_Debug CMakeFiles/GG.dir/main.c.obj CMakeFiles/GG.dir/library/date_structurs/test_matrix.c.obj CMakeFiles/GG.dir/library/date_structurs/matrix_lab_16.c.obj CMakeFiles/GG.dir/library/date_structurs/test_lab_16.c.obj | library/algoritms/libalgoritms.a library/date_structurs/libdate_structurs.a || library/algoritms/libalgoritms.a library/date_structurs/libdate_structurs.a
+build GG.exe: C_EXECUTABLE_LINKER__GG_Debug CMakeFiles/GG.dir/main.c.obj CMakeFiles/GG.dir/library/date_structurs/test_matrix.c.obj CMakeFiles/GG.dir/library/date_structurs/matrix_lab_16.c.obj CMakeFiles/GG.dir/library/date_structurs/test_lab_16.c.obj CMakeFiles/GG.dir/library/date_structurs/test_string.c.obj | library/algoritms/libalgoritms.a library/date_structurs/libdate_structurs.a || library/algoritms/libalgoritms.a library/date_structurs/libdate_structurs.a
   FLAGS = -g
   LINK_LIBRARIES = library/algoritms/libalgoritms.a  library/date_structurs/libdate_structurs.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\GG.dir
@@ -281,6 +287,12 @@ build library/date_structurs/CMakeFiles/date_structurs.dir/string_.c.obj: C_COMP
   OBJECT_DIR = library\date_structurs\CMakeFiles\date_structurs.dir
   OBJECT_FILE_DIR = library\date_structurs\CMakeFiles\date_structurs.dir
 
+build library/date_structurs/CMakeFiles/date_structurs.dir/test_string.c.obj: C_COMPILER__date_structurs_unscanned_Debug C$:/Users/tanya/CLionProjects/GG/library/date_structurs/test_string.c || cmake_object_order_depends_target_date_structurs
+  DEP_FILE = library\date_structurs\CMakeFiles\date_structurs.dir\test_string.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = library\date_structurs\CMakeFiles\date_structurs.dir
+  OBJECT_FILE_DIR = library\date_structurs\CMakeFiles\date_structurs.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target date_structurs
@@ -289,7 +301,7 @@ build library/date_structurs/CMakeFiles/date_structurs.dir/string_.c.obj: C_COMP
 #############################################
 # Link the static library library\date_structurs\libdate_structurs.a
 
-build library/date_structurs/libdate_structurs.a: C_STATIC_LIBRARY_LINKER__date_structurs_Debug library/date_structurs/CMakeFiles/date_structurs.dir/bitset.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/vector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/test_vector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/voidVector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/matrix.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/test_matrix.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/matrix_lab_16.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/test_lab_16.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/string_.c.obj
+build library/date_structurs/libdate_structurs.a: C_STATIC_LIBRARY_LINKER__date_structurs_Debug library/date_structurs/CMakeFiles/date_structurs.dir/bitset.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/vector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/test_vector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/voidVector.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/matrix.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/test_matrix.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/matrix_lab_16.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/test_lab_16.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/string_.c.obj library/date_structurs/CMakeFiles/date_structurs.dir/test_string.c.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = library\date_structurs\CMakeFiles\date_structurs.dir
   POST_BUILD = cd .

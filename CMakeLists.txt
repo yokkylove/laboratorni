@@ -7,6 +7,7 @@ add_executable(GG main.c
         library/date_structurs/test_matrix.c
         library/date_structurs/matrix_lab_16.c
         library/date_structurs/test_lab_16.c
+        library/date_structurs/test_string.c
 )
 
 add_subdirectory(library)
