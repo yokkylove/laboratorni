@@ -494,3 +494,73 @@ void test_for_task_19_9() {
 
     ASSERT_TXT(str1, str2);
 }
+
+void task_19_10(const char *filename_f, const char *filename_g) {
+    FILE *file_f = fopen(filename_f, "rb");
+    if (file_f == NULL) {
+        printf("Error opening file F\n");
+        exit(-3);
+    }
+
+    FILE *file_g = fopen(filename_g, "rb");
+    if (file_g == NULL) {
+        printf("Error opening file G\n");
+        exit(-3);
+    }
+
+    FILE *result_file = fopen("C:/Users/User/Desktop/lab1.txt", "wb");
+    if (result_file == NULL) {
+        printf("Error creating resulting file.\n");
+        fclose(file_f);
+        fclose(file_g);
+        exit(-3);
+    }
+
+    Goods stuff;
+    OrderedGoods ordered_stuff;
+    while (fread(&ordered_stuff, sizeof(OrderedGoods), 1, file_g)) {
+        while (fread(&stuff, sizeof(Goods), 1, file_f)) {
+            if (ordered_stuff.name == stuff.name) {
+                int price = ordered_stuff.amount * stuff.unit_price;
+                stuff.amount = stuff.amount - ordered_stuff.amount;
+                stuff.all_price = stuff.all_price - price;
+                if (stuff.amount > 0)
+                    fwrite(&stuff, sizeof(Goods), 1, result_file);
+                break;
+            } else
+                fwrite(&stuff, sizeof(Goods), 1, result_file);
+        }
+    }
+
+    fclose(file_f);
+    fclose(file_g);
+    fclose(result_file);
+}
+
+void test_for_task_19_10() {
+    const char *str1 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_10.1.txt";
+    const char *str2 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_10.2.txt";
+    const char *str3 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_10_test.txt";
+    task_19_10(str1, str2);
+
+    ASSERT_TXT(str2, str3);
+}
+
+void tests(){
+    test_for_task_19_1();
+    test_for_task_19_2();
+    test_for_task_19_3();
+    test_for_task_19_4();
+    test_for_task_19_5();
+    test_for_task_19_6();
+    test_for_task_19_7();
+    test_for_task_19_8();
+    test_for_task_19_9();
+    test_for_task_19_10();
+}
+
+int main(){
+    tests();
+
+    return 0;
+}
