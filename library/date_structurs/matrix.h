@@ -96,7 +96,7 @@ matrix *createArrayOfMatrixFromArray(const int *values, size_t nMatrices, size_t
 // функция-критерий для сравнения строк по минимальному элементу
 int getMin(int const * a, int n);
 
-//сортирует строки по неубывнию
-void sortRowsByRowByMin(matrix a);
+//сортирует строки по неубывнию наибольших элементов строк
+void sortRowsByMaxElement(matrix a);
 
 #endif

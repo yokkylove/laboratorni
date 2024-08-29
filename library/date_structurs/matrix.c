@@ -304,20 +304,20 @@ int getMin(int const * a, int n) {
     return min;
 }
 
-//сортирует строки по неубывнию
-void sortRowsByRowByMin(matrix a) {
-    int *mins = (int*)malloc(sizeof(int) * a.nRows);
+//сортирует строки по неубывнию наибольших элементов строк
+void sortRowsByMaxElement(matrix a) {
+    int *max = (int*)malloc(sizeof(int) * a.nRows);
     for (int i = 0; i < a.nRows; i++)
-        mins[i] = getMin(a.values[i], a.nCols);
+        max[i] = getMax(a.values[i], a.nCols);
     for (int i = 0; i < a.nRows; i++) {
         int minIndex = i;
         for (int j = i + 1; j < a.nRows; j++)
-            if (mins[j] < mins[minIndex])
+            if (max[j] < max[minIndex])
                 minIndex = j;
         if (i != minIndex) {
-            swap(&mins[i], &mins[minIndex]);
+            swap(&max[i], &max[minIndex]);
             swapRows(&a, i, minIndex);
         }
     }
-    free(mins);
+    free(max);
 }

@@ -21,7 +21,20 @@ void firstTask(matrix *m) {
     }
 }
 
-//
-void secondTask(){
+//упорядочивает строки матрицы по неубыванию наибольших
+void secondTask(matrix m){
+    for (int i = 0; i < m.nRows; i++) {
+        sortRowsByMaxElement(m);
+    }
+}
 
+int main(){
+    matrix a = createMatrixFromArray((int[]) {5, 3, 6,
+                                              7, 8, 5,
+                                              4, 1, 2},
+                                     3, 3);
+    secondTask(a);
+
+    outputMatrix(a);
+    return 0;
 }
