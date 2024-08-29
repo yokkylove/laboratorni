@@ -410,3 +410,39 @@ void test_for_task_19_7() {
 
     ASSERT_TXT(str1, str2);
 }
+
+void task_19_8(char *filename) {
+    FILE *file = fopen(filename, "rb");
+    if (file == NULL) {
+        printf("Error opening file\n");
+        exit(-3);
+    }
+
+    FILE *result_file = fopen("result.txt", "wb");
+    if (result_file == NULL) {
+        printf("Error creating resulting file.\n");
+        fclose(file);
+        exit(-3);
+    }
+
+    matrix m;
+    while (fread(&m, sizeof(matrix), 1, file)) {
+        if (!isSymmetricMatrix(&m)) {
+            transposeMatrix(&m);
+            fwrite(&m, sizeof(matrix), 1, result_file);
+        } else {
+            fwrite(&m, sizeof(matrix), 1, result_file);
+        }
+    }
+
+    fclose(file);
+    fclose(result_file);
+}
+
+void test_for_task_19_8() {
+    char *str1 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_8.txt";
+    char *str2 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_8_test.txt";
+    task_19_8(str1);
+
+    ASSERT_TXT(str1, str2);
+}
