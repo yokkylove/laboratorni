@@ -55,24 +55,6 @@ build CMakeFiles/GG.dir/main.c.obj: C_COMPILER__GG_unscanned_Debug C$:/Users/tan
   OBJECT_DIR = CMakeFiles\GG.dir
   OBJECT_FILE_DIR = CMakeFiles\GG.dir
 
-build CMakeFiles/GG.dir/library/date_structurs/test_matrix.c.obj: C_COMPILER__GG_unscanned_Debug C$:/Users/tanya/CLionProjects/GG/library/date_structurs/test_matrix.c || cmake_object_order_depends_target_GG
-  DEP_FILE = CMakeFiles\GG.dir\library\date_structurs\test_matrix.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\GG.dir
-  OBJECT_FILE_DIR = CMakeFiles\GG.dir\library\date_structurs
-
-build CMakeFiles/GG.dir/library/date_structurs/matrix_lab_16.c.obj: C_COMPILER__GG_unscanned_Debug C$:/Users/tanya/CLionProjects/GG/library/date_structurs/matrix_lab_16.c || cmake_object_order_depends_target_GG
-  DEP_FILE = CMakeFiles\GG.dir\library\date_structurs\matrix_lab_16.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\GG.dir
-  OBJECT_FILE_DIR = CMakeFiles\GG.dir\library\date_structurs
-
-build CMakeFiles/GG.dir/library/date_structurs/test_lab_16.c.obj: C_COMPILER__GG_unscanned_Debug C$:/Users/tanya/CLionProjects/GG/library/date_structurs/test_lab_16.c || cmake_object_order_depends_target_GG
-  DEP_FILE = CMakeFiles\GG.dir\library\date_structurs\test_lab_16.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\GG.dir
-  OBJECT_FILE_DIR = CMakeFiles\GG.dir\library\date_structurs
-
 build CMakeFiles/GG.dir/library/date_structurs/test_string.c.obj: C_COMPILER__GG_unscanned_Debug C$:/Users/tanya/CLionProjects/GG/library/date_structurs/test_string.c || cmake_object_order_depends_target_GG
   DEP_FILE = CMakeFiles\GG.dir\library\date_structurs\test_string.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
@@ -85,6 +67,12 @@ build CMakeFiles/GG.dir/library/date_structurs/lab_18.c.obj: C_COMPILER__GG_unsc
   OBJECT_DIR = CMakeFiles\GG.dir
   OBJECT_FILE_DIR = CMakeFiles\GG.dir\library\date_structurs
 
+build CMakeFiles/GG.dir/library/algoritms/lab_19.c.obj: C_COMPILER__GG_unscanned_Debug C$:/Users/tanya/CLionProjects/GG/library/algoritms/lab_19.c || cmake_object_order_depends_target_GG
+  DEP_FILE = CMakeFiles\GG.dir\library\algoritms\lab_19.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\GG.dir
+  OBJECT_FILE_DIR = CMakeFiles\GG.dir\library\algoritms
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target GG
@@ -93,7 +81,7 @@ build CMakeFiles/GG.dir/library/date_structurs/lab_18.c.obj: C_COMPILER__GG_unsc
 #############################################
 # Link the executable GG.exe
 
-build GG.exe: C_EXECUTABLE_LINKER__GG_Debug CMakeFiles/GG.dir/main.c.obj CMakeFiles/GG.dir/library/date_structurs/test_matrix.c.obj CMakeFiles/GG.dir/library/date_structurs/matrix_lab_16.c.obj CMakeFiles/GG.dir/library/date_structurs/test_lab_16.c.obj CMakeFiles/GG.dir/library/date_structurs/test_string.c.obj CMakeFiles/GG.dir/library/date_structurs/lab_18.c.obj | library/algoritms/libalgoritms.a library/date_structurs/libdate_structurs.a || library/algoritms/libalgoritms.a library/date_structurs/libdate_structurs.a
+build GG.exe: C_EXECUTABLE_LINKER__GG_Debug CMakeFiles/GG.dir/main.c.obj CMakeFiles/GG.dir/library/date_structurs/test_string.c.obj CMakeFiles/GG.dir/library/date_structurs/lab_18.c.obj CMakeFiles/GG.dir/library/algoritms/lab_19.c.obj | library/algoritms/libalgoritms.a library/date_structurs/libdate_structurs.a || library/algoritms/libalgoritms.a library/date_structurs/libdate_structurs.a
   FLAGS = -g
   LINK_LIBRARIES = library/algoritms/libalgoritms.a  library/date_structurs/libdate_structurs.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\GG.dir
@@ -186,6 +174,12 @@ build library/algoritms/CMakeFiles/algoritms.dir/unordered_array.c.obj: C_COMPIL
   OBJECT_DIR = library\algoritms\CMakeFiles\algoritms.dir
   OBJECT_FILE_DIR = library\algoritms\CMakeFiles\algoritms.dir
 
+build library/algoritms/CMakeFiles/algoritms.dir/lab_19.c.obj: C_COMPILER__algoritms_unscanned_Debug C$:/Users/tanya/CLionProjects/GG/library/algoritms/lab_19.c || cmake_object_order_depends_target_algoritms
+  DEP_FILE = library\algoritms\CMakeFiles\algoritms.dir\lab_19.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = library\algoritms\CMakeFiles\algoritms.dir
+  OBJECT_FILE_DIR = library\algoritms\CMakeFiles\algoritms.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target algoritms
@@ -194,7 +188,7 @@ build library/algoritms/CMakeFiles/algoritms.dir/unordered_array.c.obj: C_COMPIL
 #############################################
 # Link the static library library\algoritms\libalgoritms.a
 
-build library/algoritms/libalgoritms.a: C_STATIC_LIBRARY_LINKER__algoritms_Debug library/algoritms/CMakeFiles/algoritms.dir/array.c.obj library/algoritms/CMakeFiles/algoritms.dir/ordered_array.c.obj library/algoritms/CMakeFiles/algoritms.dir/unordered_array.c.obj
+build library/algoritms/libalgoritms.a: C_STATIC_LIBRARY_LINKER__algoritms_Debug library/algoritms/CMakeFiles/algoritms.dir/array.c.obj library/algoritms/CMakeFiles/algoritms.dir/ordered_array.c.obj library/algoritms/CMakeFiles/algoritms.dir/unordered_array.c.obj library/algoritms/CMakeFiles/algoritms.dir/lab_19.c.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = library\algoritms\CMakeFiles\algoritms.dir
   POST_BUILD = cd .

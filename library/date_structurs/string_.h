@@ -5,6 +5,7 @@
 #define MAX_STRING_SIZE 100
 #define MAX_N_WORDS_IN_STRING 100
 #define MAX_WORD_SIZE 20
+#define ALPHABET_SIZE 26
 
 //возвращает количество символом в строке, не считая ноль-символ
 size_t strlen_(const char *begin);

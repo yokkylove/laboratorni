@@ -1,6 +1,7 @@
 #include "string_.h"
 #include <ctype.h>
 #include <memory.h>
+#include <stdbool.h>
 
 //возвращает количество символом в строке, не считая ноль-символ
 size_t strlen_(const char *begin) {
@@ -20,20 +21,24 @@ char* find(char *begin, char *end, int ch) {
     return begin;
 }
 
+bool isNullSymbol(char c){
+    return c != '\0';
+}
+
 //возвращает указатель на первый
 //символ, отличный от пробельных, расположенный на ленте памяти,
 // начиная с begin и заканчивая ноль-символом.
 char* findNonSpace(char *begin) {
-    while (*begin != '\0' && isspace(*begin)) {
+    while (isNullSymbol(*begin) && isspace(*begin)) {
         begin++;
     }
     return begin;
 }
 
 //возвращает указатель на первый пробельный символ, расположенный
-//на ленте памяти начиная с адреса begin или на первый ноль-символ.
+//на ленте памяти начиная с адреса begin или на первый ноль символ.
 char* findSpace(char *begin) {
-    while (*begin != '\0' && (*begin != ' ' && *begin != '\t' && *begin != '\r' && *begin != '\n')) {
+    while (isNullSymbol(*begin) && isspace(*begin)) {
         begin++;
     }
     return begin;
@@ -42,7 +47,7 @@ char* findSpace(char *begin) {
 //возвращает указатель на первый справа символ, отличный от пробельных,
 //расположенный на ленте памяти, начиная с rbegin и заканчивая rend.
 char* findNonSpaceReverse(char *rbegin, const char *rend) {
-    while (rbegin >= rend && (*rbegin == ' ' || *rbegin == '\t' || *rbegin == '\r' || *rbegin == '\n')) {
+    while (rbegin >= rend && isspace(*rbegin)) {
         rbegin--;
     }
     return rbegin + 1;

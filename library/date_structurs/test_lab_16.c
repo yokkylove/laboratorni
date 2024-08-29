@@ -335,13 +335,13 @@ void test_thirteenthTask () {
 void test_for_sixteenthTask_1(){
     int a[] = {2, 3, 5, 5, 4, 6, 2, 3, 8, 12, 12,12,2,1,2};
     matrix m = createMatrixFromArray(&a, 3, 5);
-    assert(sixteenthTask(m) == 2);
+    assert(sixteenthTask(m) == 4);
 }
 
 void test_for_sixteenthTask_2(){
     int a[] = {2, 6, 5, 5, 4, 6, 2, 3, 8, 12, 12,12,2,1,2};
     matrix m = createMatrixFromArray(&a, 3, 5);
-    assert(sixteenthTask(m) == 1);
+    assert(sixteenthTask(m) == 3);
 }
 
 void test_sixteenthTask () {

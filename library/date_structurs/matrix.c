@@ -26,13 +26,29 @@ matrix *getMemArrayOfMatrices(int nMatrices, int nRows, int nCols) {
 
 //освобождает память, выделенную под хранение матрицы m.
 void freeMemMatrix(matrix *m) {
-    free (m->values);
+    for (int i = 0; i < m->nRows; i++) {
+        free(m->values[i]);
+    }
+    free(m->values);
+    m->values = NULL;
 }
 
 //освобождает память, выделенную под хранение массива ms из nMatrices матриц.
 void freeMemMatrices(matrix *ms, int nMatrices) {
-    for(int i = 0; i < nMatrices; i++) {
-        free (ms[i].values);
+    for (int i = 0; i < nMatrices; i++) {
+        freeMemMatrix(&ms[i]);
+    }
+    free(ms);
+    ms = NULL;
+}
+
+// Проверяет, существует ли элемент в матрице.
+int isElementExist(matrix *m, int row, int col) {
+    if (m->values != NULL && row >= 0 && row < m->nRows && col >= 0 && col < m->nCols) {
+        return 1; // Элемент существует
+    } else {
+        printf("The element does not exist\n");
+        return 0; // Элемент не существует
     }
 }
 
@@ -162,8 +178,6 @@ void selectionSortColsMatrixByColCriteria(matrix a, int (*criteria)(int*, int)) 
     free(column);
     free(criteriaValues);
 }
-
-
 
 //возвращает значение ’истина’, если
 //матрица m является квадратной, ложь – в противном случае
@@ -742,7 +756,7 @@ int getNSpecialElement2(matrix m) {
             }
         }
     }
-    return special_elements - 2;
+    return special_elements;
 }
 
 //принимает два массива целых чисел a и b и их длину n, и возвращает скалярное произведение этих векторов.

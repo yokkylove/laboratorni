@@ -1248,9 +1248,3 @@ void tests() {
     test_append();
     test_checkWordInString();
 }
-
-int main() {
-    tests();
-
-    return 0;
-}
