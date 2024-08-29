@@ -195,4 +195,11 @@ double getCosine(int *a, int *b, int n);
 // у которого угол между ним и вектором b максимален.
 int getVectorIndexWithMaxAngle(matrix m, int *b);
 
+//вычисляет скалярное произведение строки i и столбца j матрицы m
+long long getScalarProductRowAndCol(matrix m, int i, int j);
+
+//Находит скалярное произведение строки,
+// в которой находится наибольший элемент матрицы, на столбец с наименьшим элементом.
+long long getSpecialScalarProduct(matrix m);
+
 #endif

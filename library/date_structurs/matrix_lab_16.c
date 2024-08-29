@@ -109,12 +109,18 @@ int seventeenthTask(matrix m, int *b){
     return getVectorIndexWithMaxAngle(m, b);
 }
 
+//Задача 18: Находит скалярное произведение строки,
+//в которой находится наибольший элемент матрицы, на столбец с наименьшим элементом.
+long long eightteenthTask(matrix m){
+    return getSpecialScalarProduct(m);
+}
+
 int main(){
-    matrix a = createMatrixFromArray((int[]) {6, 8, 9, 2,
-                                              7, 12, 3, 4,
-                                              10, 11, 5, 1},
-                                     3, 4);
-    printf("%d", eighthTask(a));
+    matrix a = createMatrixFromArray((int[]) {6, 8, 9,
+                                              7, 12, 3,
+                                              10, 11, 5},
+                                     3, 3);
+    printf("%d", eightteenthTask(a));
 
     return 0;
 }

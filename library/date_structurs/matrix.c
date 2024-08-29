@@ -793,3 +793,41 @@ int getVectorIndexWithMaxAngle(matrix m, int *b) {
 
     return maxIndex;
 }
+
+//вычисляет скалярное произведение строки i и столбца j матрицы m
+long long getScalarProductRowAndCol(matrix m, int i, int j) {
+    long long result = 0;
+    for (int k = 0; k < m.nCols; k++) {
+        result += (long long)m.values[i][k] * m.values[k][j];
+    }
+    return result;
+}
+
+//находит скалярное произведение строки с наибольшим элементом матрицы
+//и столбца с наименьшим элементом матрицы
+long long getSpecialScalarProduct(matrix m) {
+    // Найдем индекс строки с максимальным элементом
+    int maxRowIndex = 0;
+    int maxColIndex = 0;
+    for (int i = 0; i < m.nRows; i++) {
+        for (int j = 0; j < m.nCols; j++) {
+            if (m.values[i][j] > m.values[maxRowIndex][maxColIndex]) {
+                maxRowIndex = i;
+                maxColIndex = j;
+            }
+        }
+    }
+
+    // Найдем индекс столбца с минимальным элементом
+    int minColIndex = 0;
+    int minRowIndex = 0;
+    for (int i = 0; i < m.nRows; i++) {
+        for (int j = 0; j < m.nCols; j++) {
+            if (m.values[i][j] < m.values[minRowIndex][minColIndex]) {
+                minColIndex = j;
+                minRowIndex = i;
+            }
+        }
+    }
+    return getScalarProductRowAndCol(m, maxRowIndex, minColIndex);
+}
