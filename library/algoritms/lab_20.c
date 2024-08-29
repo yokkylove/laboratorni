@@ -308,6 +308,71 @@ void test_for_task_4(){
     task_4(array, size);
 }
 
+void fillingCalcMatrix(matrix m, matrix *calcMatrix, size_t rows, size_t cols){
+    for (size_t indRow = 0; indRow < rows; indRow++){
+        for (size_t indCol = 0; indCol < cols; indCol++){
+            if (m.values[indRow][indCol] == 1){
+                if (indRow != 0){
+                    calcMatrix->values[indRow][indCol] =
+                            calcMatrix->values[indRow - 1][indCol] + 1;
+                }
+                else{
+                    calcMatrix->values[indRow][indCol] = 1;
+                }
+            } else {
+                calcMatrix->values[indRow][indCol] = 0;
+            }
+        }
+    }
+}
+
+void task_5(matrix m, size_t rows, size_t cols, size_t *result){
+    matrix calcMatrix = getMemMatrix(rows, cols);
+    fillingCalcMatrix(m, &calcMatrix, rows, cols);
+    size_t calcResult = 0;
+    for (size_t indCol = 0; indCol < cols; indCol++){
+        for (size_t indRow = 0; indRow < rows; indRow++){
+            for (size_t indK = indCol + 1; indK < cols + 1; indK++){
+                int min = calcMatrix.values[indRow][indCol];
+                for (size_t indFromColToK = indCol; indFromColToK < indK; indFromColToK++){
+                    if (calcMatrix.values[indRow][indFromColToK] < min){
+                        min = calcMatrix.values[indRow][indFromColToK];
+                    }
+                }
+                calcResult += min;
+            }
+        }
+    }
+    *result = calcResult;
+}
+
+void test_for_task_5(){
+    size_t rows1 = 3;
+    size_t cols1 = 3;
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    1, 0, 1,
+                    1, 1, 0,
+                    1, 1, 0
+            }, 3, 3
+    );
+    size_t result1 = 0;
+    task_5(m1, rows1, cols1, &result1);
+    assert(result1 == 13);
+    size_t rows2 = 3;
+    size_t cols2 = 4;
+    matrix m2 = createMatrixFromArray(
+            (int[]) {
+                    0, 1, 1, 0,
+                    0, 1, 1, 1,
+                    1, 1, 1, 0
+            }, 3, 4
+    );
+    size_t result2 = 0;
+    task_5(m2, rows2, cols2, &result2);
+    assert(result2 == 24);
+}
+
 int main(){
     test_for_task_2();
 }
