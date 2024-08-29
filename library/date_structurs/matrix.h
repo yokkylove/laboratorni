@@ -181,4 +181,18 @@ void printMatricesWithMinNorm(matrix *ms, int nMatrix);
 //определяет количество особых элементов в матрице
 int getNSpecialElement2(matrix m);
 
+//принимает два массива целых чисел a и b и их длину n, и возвращает скалярное произведение этих векторов.
+double getScalarProduct(int *a, int *b, int n);
+
+//принимает массив целых чисел a и его длину n, и возвращает длину вектора.
+double getVectorLength(int *a, int n);
+
+//принимает два массива целых чисел a и b и их длину n, и возвращает косинус угла между векторами.
+double getCosine(int *a, int *b, int n);
+
+//принимает матрицу m и массив целых чисел b,
+// и возвращает индекс вектора из матрицы m,
+// у которого угол между ним и вектором b максимален.
+int getVectorIndexWithMaxAngle(matrix m, int *b);
+
 #endif

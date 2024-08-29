@@ -102,10 +102,19 @@ void sixteenthTask(matrix m){
     getNSpecialElement2(m);
 }
 
-int main(){
-    matrix a = createMatrixFromArray((int[]) {2, 3, 5, 5, 4,
-                                              6, 2, 3, 8, 12,
-                                              0,1,2,1,2},
-                                     3, 5);
+//Задача 17: принимает матрицу m и массив целых чисел b,
+//и возвращает индекс вектора из матрицы m,
+//у которого угол между ним и вектором b максимален.
+int seventeenthTask(matrix m, int *b){
+    return getVectorIndexWithMaxAngle(m, b);
+}
 
+int main(){
+    matrix a = createMatrixFromArray((int[]) {6, 8, 9, 2,
+                                              7, 12, 3, 4,
+                                              10, 11, 5, 1},
+                                     3, 4);
+    printf("%d", eighthTask(a));
+
+    return 0;
 }
