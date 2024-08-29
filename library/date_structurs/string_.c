@@ -1,5 +1,6 @@
 #include "string_.h"
 #include <ctype.h>
+#include <memory.h>
 
 //возвращает количество символом в строке, не считая ноль-символ
 size_t strlen_(const char *begin) {
@@ -65,4 +66,50 @@ int strcmp(const char *lhs, const char *rhs) {
         rhs++;
     }
     return (*lhs > *rhs) - (*lhs < *rhs);
+}
+
+//записывает по адресу beginDestination фрагмент памяти,
+//начиная с адреса beginSource до endSource50.
+//Возвращает указатель на следующий свободный фрагмент памяти в destination.
+char* copy(const char *beginSource, const char *endSource, char
+*beginDestination) {
+    size_t size = endSource - beginSource;
+    memcpy(beginDestination, beginSource, size);
+    *(beginDestination + size) = '\0';
+    return beginDestination + size;
+}
+
+//записывает по адресу beginDestination элементы из фрагмента
+//памяти начиная с beginSource заканчивая endSource,
+//удовлетворяющие функции-предикату f.
+//Функция возвращает указатель на следующий свободный для
+//записи фрагмент в памяти.
+char* copyIf(char *beginSource, const char *endSource, char
+*beginDestination, int (*f)(int)) {
+    while (beginSource != endSource) {
+        if (f(*beginSource)) {
+            *beginDestination = *beginSource;
+            beginDestination++;
+        }
+        beginSource++;
+    }
+    *beginDestination = '\0';
+    return beginDestination;
+}
+
+//записывает по адресу beginDestination элементы из фрагмента
+//памяти начиная с rbeginSource заканчивая rendSource, удовлетворяющие функции-предикату f.
+//Функция возвращает значение beginDestination по окончанию работы функции.
+char* copyIfReverse(char *rbeginSource, const char *rendSource, char
+*beginDestination, int (*f)(int)) {
+    char *rbeginDest = beginDestination;
+    while (rbeginSource >= rendSource) {
+        if (f(*rbeginSource)) {
+            *rbeginDest = *rbeginSource;
+            rbeginDest++;
+        }
+        rbeginSource--;
+    }
+    *rbeginDest = '\0';
+    return rbeginDest;
 }
