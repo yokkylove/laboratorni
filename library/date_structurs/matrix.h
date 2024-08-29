@@ -16,13 +16,25 @@ typedef struct position {
 matrix getMatrix(int nRows, int nCols);
 
 //размещает в динамической памяти массив из nMatrices матриц размером nRows на nCols.
-matrix *getArrayOfMatrix(int nMatrices, int nRows, int nCols);
+matrix *getArrayOfMatrices(int nMatrices, int nRows, int nCols);
 
-//освобождает память, выделенную под хранение матрицы a.
-void freeMatrix(matrix a);
+//освобождает память, выделенную под хранение матрицы m.
+void freeMatrix(matrix m);
 
-//освобождает память, выделенную под хранение массива a из k матриц.
-void freeArrayOfMatrix(matrix *a, int k);
+//освобождает память, выделенную под хранение массива ms из nMatrices матриц.
+void freeMatrices(matrix *ms, int nMatrices);
+
+//ввод матрицы m.
+void inputMatrix(matrix *m);
+
+//ввод массива из nMatrices матриц, хранящейся по адресу ms.
+void inputMatrices(matrix *ms, int nMatrices);
+
+//вывод матрицы m.
+void outputMatrix(matrix m);
+
+//вывод массива из nMatrices матриц, хранящейся по адресу ms.
+void outputMatrices(matrix *ms, int nMatrices);
 
 
 
