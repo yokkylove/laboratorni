@@ -97,23 +97,27 @@ void test_thirdTask () {
 }
 
 void test_for_fourthTask_1 () {
-    int a[] = {35,23,53,245,2345,3245,23453,455,345};
+    int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     matrix m = createMatrixFromArray(&a, 3, 3);
-    matrix h = fourthTask(m);
+    int b[] = {30, 36, 42, 66, 81, 96, 102, 126, 150};
+    m = fourthTask(m);
+    matrix h = createMatrixFromArray(&b, 3, 3);
     for (int i = 0; i < m.nRows; i++) {
         for (int j = 0; j < m.nCols; j++) {
-            assert(m.values[i][j] != h.values[i][j]);
+            assert(m.values[i][j] == h.values[i][j]);
         }
     }
 }
 
 void test_for_fourthTask_2 () {
-    int a[] = {1, 1, 1, 1, 1, 1, 1, 1, 1};
+    int a[] = {9, 8,7,6,5,4,3,2,1};
     matrix m = createMatrixFromArray(&a, 3, 3);
-    matrix h = fourthTask(m);
+    int b[] = {150, 126, 102, 96, 81, 66, 42, 36, 30};
+    m = fourthTask(m);
+    matrix h = createMatrixFromArray(&b, 3, 3);
     for (int i = 0; i < m.nRows; i++) {
         for (int j = 0; j < m.nCols; j++) {
-            assert(m.values[i][j] != h.values[i][j]);
+            assert(m.values[i][j] == h.values[i][j]);
         }
     }
 }
