@@ -136,4 +136,10 @@ void sortByDistances(matrix m);
 
 void insertionSortRowsMatrixByRowCriteriaF(matrix m, float (*criteria)(int *, int));
 
+// эта функция считает количество эквивалентных классов по суммам строк в матрице m
+int countEqClassesByRowsSum(matrix m);
+
+// эта функция считает количество уникальных элементов в массиве a длиной n
+int countNUnique(long long *a, int n);
+
 #endif

@@ -67,6 +67,11 @@ void ninthTask(matrix m){
     return sortByDistances(m);
 }
 
+//Задача 10: определяет количество классов эквивалентных строк данной прямоугольной матрицы
+int tenthTask(matrix m){
+    return countEqClassesByRowsSum(m);
+}
+
 int main(){
     matrix a = createMatrixFromArray((int[]) {6, 8, 9, 2,
                                               7, 12, 3, 4,
