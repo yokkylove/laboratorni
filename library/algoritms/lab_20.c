@@ -484,6 +484,31 @@ void test_for_task_7(){
     task_7(array2, lengthArray2);
 }
 
+void task_8(const char *s, size_t length, const size_t indexes[], char *newS){
+    for (size_t ind = 0; ind < length; ind++){
+        newS[ind] = s[indexes[ind]];
+    }
+    newS[length] = '\0';
+}
+
+void test_for_task_8(){
+    char s1[4] = "abc";
+    size_t lengthS1 = 3;
+    size_t indexes1[3] = {0, 1, 2};
+    char got1[4];
+    task_8(s1, lengthS1, indexes1, got1);
+    char expected1[4] = "abc";
+    assert(strcmp(got1, expected1) == 0);
+
+    char s2[5] = "abap";
+    size_t lengthS2 = 4;
+    size_t indexes2[4] = {0, 3, 2, 1};
+    char got2[5];
+    task_8(s2, lengthS2, indexes2, got2);
+    char expected2[5] = "apab";
+    assert(strcmp(got2, expected2) == 0);
+}
+
 int main(){
     test_for_task_2();
 }
