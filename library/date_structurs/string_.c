@@ -122,3 +122,62 @@ char* getEndOfString(const char* str) {
     }
     return (char*) end;
 }
+
+char* strpbrk_(const char* str, const char* delim) {
+    const char* ptr = str;
+
+    while (*ptr != '\0') {
+        const char* d = delim;
+        while (*d != '\0') {
+            if (*ptr == *d) {
+                return (char*)ptr;
+            }
+            d++;
+        }
+        ptr++;
+    }
+
+    return NULL;
+}
+
+char* strtok_(char* str, const char* delim) {
+    static char* savedToken = NULL;
+
+    if (str != NULL) {
+        savedToken = str;
+    }
+
+    if (savedToken == NULL) {
+        return NULL;
+    }
+
+    char* tokenStart = savedToken;
+    char* tokenEnd = strpbrk_(savedToken, delim);
+
+    if (tokenEnd != NULL) {
+        *tokenEnd = '\0';
+        savedToken = tokenEnd + 1;
+    } else {
+        savedToken = NULL;
+    }
+
+    return tokenStart;
+}
+
+char* strcat_(char* dest, const char* src) {
+    char* ptr = dest;
+
+    while (*ptr != '\0') {
+        ptr++;
+    }
+
+    while (*src != '\0') {
+        *ptr = *src;
+        ptr++;
+        src++;
+    }
+
+    *ptr = '\0';
+
+    return dest;
+}

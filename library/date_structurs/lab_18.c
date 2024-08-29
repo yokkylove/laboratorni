@@ -495,6 +495,7 @@ void test_reverseWordsBag(){
     test_reverseWordsBag3();
 }
 
+//проверяет, является ли заданное слово палиндромом.
 bool isWordPalindrome(char *begin, char *end) {
     end--;
     while (end - begin > 0) {
@@ -506,6 +507,7 @@ bool isWordPalindrome(char *begin, char *end) {
     return true;
 }
 
+//подсчитывает количество палиндромов в строке, разделенной запятыми.
 size_t howManyWordsPalindromes(char *s) {
     char *endS = getEndOfString(s);
     char *beginSearch = findNonSpace(s);
@@ -557,15 +559,52 @@ void test_howManyWordsPalindromes_task8() {
     test_howManyWordsPalindromes_OneSymbol();
 }
 
-int main(){
-    test_removeNonLetters();
-    test_removeExtraSpaces();
-    test_digitToStartLetterToEndt();
-    test_replacesNumbersWithSpaces_task4();
-    test_replace_task5();
-    test_areWordsOrdered_task6();
-    test_reverseWordsBag();
-    test_howManyWordsPalindromes_task8();
+//объединяет две строки s1 и s2, разбивая их на слова
+//с помощью функции strtok_ и объединяя слова
+//в результирующую строку result.
+void mergeStrings(char* s1, char* s2, char* result) {
+    char* word1 = strtok_(s1, " ");
+    char* word2 = strtok_(s2, " ");
+
+    while (word1 != NULL || word2 != NULL) {
+        if (word1 != NULL) {
+            strcat_(result, word1);
+            strcat_(result, " ");
+            word1 = strtok_(NULL, " ");
+        }
+        if (word2 != NULL) {
+            strcat_(result, word2);
+            strcat_(result, " ");
+            word2 = strtok_(NULL, " ");
+        }
+    }
+}
+
+void test_mergeString1() {
+    char s1[] = "Hello how are you";
+    char s2[] = "I am fine thank you";
+    char result[100] = "";
+    mergeStrings(s1, s2, result);
+    ASSERT_STRING("Hello I am fine thank you", result);
+}
+
+void test_mergeString2() {
+    char s1[] = "Thank you my friend";
+    char s2[] = "Hello how are you";
+    char result[100] = "";
+    mergeStrings(s1, s2, result);
+    ASSERT_STRING("Thank Hello how are you", result);
+}
+
+
+int main() {
+    char s1[] = "Thank you my friend";
+    char s2[] = "Hello how are you";
+    char result[100] = "";
+
+    mergeStrings(s1, s2, result);
+
+    printf("Merged String: %s\n", result);
 
     return 0;
 }

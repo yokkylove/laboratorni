@@ -59,4 +59,11 @@ char* copyIfReverse(char *rbeginSource, const char *rendSource, char
 //возвращает указатель на конец строки
 char* getEndOfString(const char* str);
 
+//ищет в строке str первое вхождение любого символа из строки delim.
+char* strpbrk_(const char* str, const char* delim);
+
+char* strtok_(char* str, const char* delim);
+
+char* strcat_(char* dest, const char* src);
+
 #endif
