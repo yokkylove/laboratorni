@@ -1,4 +1,5 @@
 #include "matrix.h"
+#include <malloc.h>
 
 //Задача 1: меняет местами строки в которых находятся максимальный и минимальный элементы.
 void firstTask(matrix *m) {
@@ -21,19 +22,24 @@ void firstTask(matrix *m) {
     }
 }
 
-//упорядочивает строки матрицы по неубыванию наибольших
+//Задача 2: упорядочивает строки матрицы по неубыванию наибольших
 void secondTask(matrix m){
     for (int i = 0; i < m.nRows; i++) {
         sortRowsByMaxElement(m);
     }
 }
 
+//Задача 3: упорядочивает столбцы матрицы по неубыванию минимальных элементов столбцов
+void thirdTask(matrix a){
+    sortColsByMinElemnt(a, getMin);
+}
+
 int main(){
-    matrix a = createMatrixFromArray((int[]) {5, 3, 6,
-                                              7, 8, 5,
-                                              4, 1, 2},
-                                     3, 3);
-    secondTask(a);
+    matrix a = createMatrixFromArray((int[]) {5, 3, 6, 2,
+                                              7, 8, 5, 3,
+                                              4, 1, 2, 9},
+                                     3, 4);
+    thirdTask(a);
 
     outputMatrix(a);
     return 0;

@@ -321,3 +321,26 @@ void sortRowsByMaxElement(matrix a) {
     }
     free(max);
 }
+
+//упорядочивает столбцы матрицы по неубыванию минимальных элементов столбцов
+void sortColsByMinElemnt(matrix a, int (*criteria)(int const*, int)) {
+    int *criteriaValues = (int*)malloc(sizeof(int) * a.nCols);
+    int *column = (int*)malloc(sizeof(int) * a.nRows);
+    for (int j = 0; j < a.nCols; j++) {
+        for (int i = 0; i < a.nRows; i++)
+            column[i] = a.values[i][j];
+        criteriaValues[j] = criteria(column, a.nCols);
+    }
+    for (int i = 0; i < a.nCols; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < a.nCols; j++)
+            if (criteriaValues[j] < criteriaValues[minIndex])
+                minIndex = j;
+        if (i != minIndex) {
+            swap(&criteriaValues[i], &criteriaValues[minIndex]);
+            swapColumns(a, i, minIndex);
+        }
+    }
+    free(column);
+    free(criteriaValues);
+}

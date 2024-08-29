@@ -99,4 +99,12 @@ int getMin(int const * a, int n);
 //сортирует строки по неубывнию наибольших элементов строк
 void sortRowsByMaxElement(matrix a);
 
+void swap(int *a, int *b);
+
+//обмен колонок с порядковыми номерами j1 и j2 в матрице m.
+void swapColumns(matrix m, int j1, int j2);
+
+//упорядочивает столбцы матрицы по неубыванию минимальных элементов столбцов
+void sortColsByMinElemnt(matrix a, int (*criteria)(int const*, int));
+
 #endif
