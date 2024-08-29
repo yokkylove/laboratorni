@@ -145,4 +145,10 @@ int countNUnique(long long *a, int n);
 //определяет количество особых элементов матрицы
 int getNSpecialElement(matrix m);
 
+//ищет минимальный элемент в первой строке матрицы
+position getLeftMin(matrix m);
+
+//заменяет предпоследнюю строку матрицы первым из столбцов, в котором находится минимальный элемент матрицы
+void swapPenultimateRow(matrix m);
+
 #endif

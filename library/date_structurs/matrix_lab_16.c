@@ -77,16 +77,22 @@ int eleventhTask(matrix m){
     return getNSpecialElement(m);
 }
 
+//Задача 12: заменяет предпоследнюю строку матрицы первым из столбцов, в котором находится минимальный элемент матрицы
+void twelfthTask(matrix m){
+    swapPenultimateRow(m);
+}
+
 int main(){
-    matrix a = createMatrixFromArray((int[]) {3, 5, 5, 4,
-                                              2, 3, 6, 7,
-                                              12, 2, 1, 2},
-                                     3, 4);
+    matrix a = createMatrixFromArray((int[]) {1, 2, 3,
+                                              4, 5, 6,
+                                              7, 8, 9},
+                                     3, 3);
     matrix b = createMatrixFromArray((int[]) {3, 2, 5, 4, 6, 8,
                                               1, 3, 6, 3, 4, 6,
                                               3, 2, 1, 2, 7, 9},
                                      3, 6);
-    printf("%d", eleventhTask(a));
+    twelfthTask(a);
 
+    outputMatrix(a);
     return 0;
 }
