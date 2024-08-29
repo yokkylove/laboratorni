@@ -82,6 +82,11 @@ void twelfthTask(matrix m){
     swapPenultimateRow(m);
 }
 
+//Задача 13:
+int thirteenthTask(matrix *ms, int nMatrix){
+    countNonDescendingRowsMatrices(ms, nMatrix);
+}
+
 int main(){
     matrix a = createMatrixFromArray((int[]) {1, 2, 3,
                                               4, 5, 6,

@@ -65,6 +65,7 @@ void outputMatrix(matrix m) {
 void outputMatrices(matrix *ms, int nMatrices) {
     for (int i = 0; i < nMatrices; i++) {
         outputMatrix(ms[i]);
+        printf("\n");
     }
 }
 
@@ -615,4 +616,38 @@ void swapPenultimateRow(matrix m) {
         m.values[m.nRows - 2][i] = m.values[i][minPos.colIndex];
     }
     m.values[m.nRows - 2][1] = element;
+}
+
+//Возвращает - "истина", если матрица отсортирована, иначе - "ложь"
+bool isNonDescendingSorted(int *a, int n) {
+    for (int i = 1; i < n; i++) {
+        if (a[i] < a[i-1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+//Если хотя бы одна
+//строка не является неубывающей, функция возвращает false,
+//иначе возвращает true.
+bool hasAllNonDescendingRows(matrix m) {
+    for (int i = 0; i < m.nRows; i++) {
+        if (!isNonDescendingSorted(m.values[i], m.nCols)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+//Определяет число матриц, строки которых упорядочены по неубыванию элементов
+int countNonDescendingRowsMatrices(matrix *ms, int nMatrix) {
+    int count = 0;
+    for (int i = 0; i < nMatrix; i++) {
+        if (hasAllNonDescendingRows(ms[i])) {
+            count++;
+        }
+    }
+
+    return count;
 }

@@ -151,4 +151,15 @@ position getLeftMin(matrix m);
 //заменяет предпоследнюю строку матрицы первым из столбцов, в котором находится минимальный элемент матрицы
 void swapPenultimateRow(matrix m);
 
+//Возвращает - "истина", если матрица отсортирована, иначе - "ложь"
+bool isNonDescendingSorted(int *a, int n);
+
+//Если хотя бы одна
+//строка не является неубывающей, функция возвращает false,
+//иначе возвращает true.
+bool hasAllNonDescendingRows(matrix m);
+
+//Определяет число матриц, строки которых упорядочены по неубыванию элементов
+int countNonDescendingRowsMatrices(matrix *ms, int nMatrix);
+
 #endif
