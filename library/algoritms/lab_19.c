@@ -446,3 +446,51 @@ void test_for_task_19_8() {
 
     ASSERT_TXT(str1, str2);
 }
+
+void task_19_9(const char *filename, int n) {
+    FILE *file = fopen(filename, "rb");
+    if (file == NULL) {
+        printf("Error opening file\n");
+        exit(-3);
+    }
+
+    FILE *result_file = fopen("C:/Users/User/Desktop/lab1.txt", "wb");
+    if (result_file == NULL) {
+        printf("Error creating resulting file.\n");
+        fclose(file);
+        exit(-3);
+    }
+
+    size_t size = 0;
+    Sportsman persons[MAX_SIZE];
+    Sportsman person;
+    while (fread(&person, sizeof(Sportsman), 1, file)) {
+        appendS(persons, &size, person);
+    }
+
+    for (int i = 0; i < n; ++i) {
+        Sportsman temp_player = {NULL, -999};
+        int idx = 0;
+        for (int j = 0; j < size; ++j) {
+            if (persons[j].score > temp_player.score) {
+                temp_player.score = persons[j].score;
+                temp_player.initials = persons[j].initials;
+                idx = j;
+            }
+        }
+
+        persons[idx].score = -999;
+        fwrite(&temp_player, sizeof(Sportsman), 1, result_file);
+    }
+
+    fclose(file);
+    fclose(result_file);
+}
+
+void test_for_task_19_9() {
+    char *str1 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_9.txt";
+    char *str2 = "C:/Users/tanya/CLionProjects/GG/library/algoritms/19_9_test.txt";
+    task_19_9(str1, 2);
+
+    ASSERT_TXT(str1, str2);
+}
