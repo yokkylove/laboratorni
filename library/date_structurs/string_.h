@@ -66,4 +66,18 @@ char* strtok_(char* str, const char* delim);
 
 char* strcat_(char* dest, const char* src);
 
+char *strncpy_(char *destination, const char *source, size_t num);
+
+char *strstr_(const char *haystack, const char *needle);
+
+void strcpy_(char *dest, const char *src);
+
+char* strdup_(const char* str);
+
+size_t strcspn_(const char* str1, const char* str2);
+
+char *strrchr_(const char *str, int c);
+
+int strncmp_(const char *s1, const char *s2, size_t n);
+
 #endif

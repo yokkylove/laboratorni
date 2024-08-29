@@ -69,7 +69,7 @@ int strcmp(const char *lhs, const char *rhs) {
 }
 
 //записывает по адресу beginDestination фрагмент памяти,
-//начиная с адреса beginSource до endSource50.
+//начиная с адреса beginSource до endSource.
 //Возвращает указатель на следующий свободный фрагмент памяти в destination.
 char* copy(const char *beginSource, const char *endSource, char
 *beginDestination) {
@@ -180,4 +180,109 @@ char* strcat_(char* dest, const char* src) {
     *ptr = '\0';
 
     return dest;
+}
+
+char *strncpy_(char *destination, const char *source, size_t num) {
+    char *start = destination;
+
+    while (num && (*destination++ = *source++)) {
+        num--;
+    }
+
+    if (num) {
+        while (--num) {
+            *destination++ = '\0';
+        }
+    }
+
+    return start;
+}
+
+char *strstr_(const char *haystack, const char *needle) {
+    if (*needle == '\0') {
+        return (char *)haystack;  // Пустая подстрока всегда найдена в любой строке
+    }
+
+    while (*haystack) {
+        const char *h = haystack;
+        const char *n = needle;
+
+        while (*h && *n && (*h == *n)) {
+            h++;
+            n++;
+        }
+
+        if (*n == '\0') {
+            return (char *)haystack;  // Найдено вхождение подстроки
+        }
+
+        haystack++;
+    }
+
+    return NULL;  // Подстрока не найдена
+}
+
+void strcpy_(char *dest, const char *src) {
+    while (*src) {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0';
+}
+
+char* strdup_(const char* str) {
+    size_t len = strlen_(str); // определяем длину строки
+    char* newStr = (char*)malloc(len + 1); // выделяем память для новой строки
+
+    if (newStr == NULL) {
+        return NULL; // возвращаем NULL, если не удалось выделить память
+    }
+
+    strcpy_(newStr, str); // копируем строку в новую память
+    return newStr; // возвращаем указатель на новую строку
+}
+
+size_t strcspn_(const char* str1, const char* str2) {
+    const char* ptr1 = str1;
+    size_t len = 0;
+
+    while (*ptr1) {
+        const char* ptr2 = str2;
+        while (*ptr2) {
+            if (*ptr1 == *ptr2) {
+                return len;
+            }
+            ++ptr2;
+        }
+        ++ptr1;
+        ++len;
+    }
+
+    return len;
+}
+
+char *strrchr_(const char *str, int c) {
+    char *last = NULL;
+    while (*str != '\0') {
+        if (*str == c) {
+            last = (char *)str;
+        }
+        str++;
+    }
+    return last;
+}
+
+int strncmp_(const char *s1, const char *s2, size_t n) {
+    while (n--) {
+        if (*s1 != *s2) {
+            return (unsigned char)*s1 - (unsigned char)*s2;
+        }
+        if (*s1 == '\0') {
+            return 0;
+        }
+        s1++;
+        s2++;
+    }
+    return 0;
 }

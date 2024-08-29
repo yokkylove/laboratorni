@@ -17,6 +17,13 @@ typedef struct BagOfWords {
     size_t size;
 } BagOfWords;
 
+typedef enum WordBeforeFirstWordWithAReturnCode {
+    FIRST_WORD_WITH_A,
+    NOT_FOUND_A_WORD_WITH_A,
+    WORD_FOUND,
+    EMPTY_STRING
+} WordBeforeFirstWordWithAReturnCode;
+
 BagOfWords _bag;
 BagOfWords _bag2;
 
@@ -596,15 +603,74 @@ void test_mergeString2() {
     ASSERT_STRING("Thank Hello how are you", result);
 }
 
+void test_mergeString(){
+    test_mergeString1();
+    test_mergeString2();
+}
+
+//Преобразовывает строку, изменяя порядок следования слов в строке на обратный.
+void reverseWords(char *str) {
+    int i = 0;
+    _bag.size = 0;
+    WordDescriptor word;
+
+    //Считываем первое слово в строке
+    while (*str && _bag.size < 1) {
+        if (*str != ' ' && *(str+1) == ' ' || *(str+1) == '\0') {
+            word.begin = str - i;
+            word.end = str + 1;
+            _bag.words[_bag.size] = word;
+            _bag.size++;
+            i = -1;
+        }
+        str++;
+        i++;
+    }
+
+    //Считываем оставшиеся слова в строке
+    while (*str) {
+        if (*str != ' ' && *(str+1) == ' ' || *(str+1) == '\0') {
+            word.begin = str - i + 1;
+            word.end = str + 1;
+            _bag.words[_bag.size] = word;
+            _bag.size++;
+            i = -1;
+        }
+        str++;
+        i++;
+    }
+
+    // Перезаписываем слова в обратном порядке
+    char *reversedStr = malloc(strlen_(str) + 1); // выделяем память для хранения перезаписанных слов
+    char *p = reversedStr;
+
+    for (int j = _bag.size - 1; j >= 0; j--) {
+        for (char *p = _bag.words[j].begin; p < _bag.words[j].end; p++) {
+            *reversedStr = *p;
+            reversedStr++;
+        }
+        *reversedStr = ' ';
+        reversedStr++;
+    }
+    *reversedStr = '\0';
+
+    strcpy_(str, p); // копируем измененную строку обратно в исходную
+
+    free(p); // освобождаем выделенную память
+}
+
+void test_reverseWords1 () {
+    char p[MAX_STRING_SIZE] = "Hello world! This is a test.";
+    reverseWords(p);
+    assert(strcmp(p, ".test a is This !world Hello") == 0);
+
+    char c[MAX_STRING_SIZE] = ".test a is This !world Hello";
+    reverseWords(c);
+    assert(strcmp(c, "Hello world! This is a test.") == 0);
+}
 
 int main() {
-    char s1[] = "Thank you my friend";
-    char s2[] = "Hello how are you";
-    char result[100] = "";
-
-    mergeStrings(s1, s2, result);
-
-    printf("Merged String: %s\n", result);
+    test_reverseWords1();
 
     return 0;
 }
